@@ -1,0 +1,28 @@
+package ec.edu.ups.ejb;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import ec.edu.ups.modelo.Bodega;
+import ec.edu.ups.modelo.Provincia;
+
+public class ProvinciaFacade extends AbstractFacade<Provincia>{
+
+	public ProvinciaFacade() {
+		super(Provincia.class);
+	}
+
+	@PersistenceContext(unitName = "PracticaDeLaboratorio03EJB-JSF-JPA")
+	private EntityManager em;
+	
+	@Override
+	protected EntityManager getEntityManager() {
+		return em;
+	}
+	
+	public Provincia buscarProvincia (String nombre) {
+		String jpql = "SELECT prov FROM Provincia prov WHERE prov.nombre=" + nombre;
+		Provincia prov = (Provincia) em.createQuery(jpql).getSingleResult();
+		return prov;
+	}
+}

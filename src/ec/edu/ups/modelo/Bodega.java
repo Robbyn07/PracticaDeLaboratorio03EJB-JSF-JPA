@@ -29,10 +29,10 @@ public class Bodega implements Serializable {
 	@JoinColumn
 	private List<Producto> productos;
 	
-	public Bodega(int id, String nombre, String Direccion, Ciudad ciudad) {
+	public Bodega(int id, String nombre, String direccion, Ciudad ciudad) {
 		this.setId(id);
 		this.setNombre(nombre);
-		this.setDireccion(Direccion);
+		this.setDireccion(direccion);
 		this.setCiudad(ciudad);
 	}
 	
