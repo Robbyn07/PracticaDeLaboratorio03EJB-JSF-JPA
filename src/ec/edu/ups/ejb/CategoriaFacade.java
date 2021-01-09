@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.Categoria;
+import ec.edu.ups.modelo.Producto;
 
 public class CategoriaFacade extends AbstractFacade<Categoria>{
 
@@ -19,4 +20,9 @@ public class CategoriaFacade extends AbstractFacade<Categoria>{
 		return em;
 	}
 
+	public int obtenerCategoriaId(Producto producto) {
+		String jpql = "SELECT cat.id FROM Categoria cat WHERE cat.producto.id=" + producto.getId();
+		int categoria_id = (int) em.createQuery(jpql).getSingleResult();
+		return categoria_id;
+	}
 }

@@ -25,7 +25,7 @@ public class Bodega implements Serializable {
 	@JoinColumn
 	private Ciudad ciudad;
 	
-	@ManyToMany(mappedBy = "bodegas")
+	@ManyToMany
 	@JoinColumn
 	private List<Producto> productos;
 	

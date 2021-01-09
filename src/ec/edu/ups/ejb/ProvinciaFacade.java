@@ -21,8 +21,9 @@ public class ProvinciaFacade extends AbstractFacade<Provincia>{
 	}
 	
 	public Provincia buscarProvincia (String nombre) {
-		String jpql = "SELECT prov FROM Provincia prov WHERE prov.nombre=" + nombre;
+		String jpql = "SELECT prov FROM Provincia prov WHERE prov.nombre='" + nombre + "'";
 		Provincia prov = (Provincia) em.createQuery(jpql).getSingleResult();
 		return prov;
 	}
+	
 }

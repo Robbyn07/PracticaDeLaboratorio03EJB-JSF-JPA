@@ -24,20 +24,20 @@ public class Persona implements Serializable {
     private String direccion;
     private String telefono;
     private String correo;
-    private String password;
+    private String contrasena;
     private char rol;
 	
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<FacturaCabecera> facturasCab= new ArrayList<FacturaCabecera>();
     
-    public Persona(int id, String nombre, String apellido, String direccion, String telefono, String correo, String password, char rol) {
+    public Persona(int id, String nombre, String apellido, String direccion, String telefono, String correo, String contrasena, char rol) {
     	this.setId(id);
     	this.setNombre(nombre);
     	this.setApellido(apellido);
     	this.setDireccion(direccion);
     	this.setTelefono(telefono);
     	this.setCorreo(correo);
-    	this.setPassword(password);
+    	this.setContrasena(contrasena);
     	this.setRol(rol);
     }
     
@@ -93,12 +93,12 @@ public class Persona implements Serializable {
 		this.correo = correo;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public char getRol() {

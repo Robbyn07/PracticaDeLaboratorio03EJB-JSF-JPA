@@ -19,16 +19,17 @@ public class PersonaFacade extends AbstractFacade<Persona>{
 		return em;
 	}
 
-	public Persona verificarUsuario(String usuario, String contrasena) {
-		String jpql = "SELECT per FROM Persona per WHERE per.persona ='" + usuario + "' AND per.contrasena='" + contrasena + "'";
+	public Persona verificarUsuario(String correo, String contrasena) {
+		String jpql = "SELECT per FROM Persona per WHERE per.correo ='" + correo + "' AND per.contrasena='" + contrasena + "'";
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		return per;
 	}
 	
-	public Persona buscarCliente (int cedula) {
+	public Persona buscarCliente(String cedula) {
 		String jpql = "SELECT per FROM Persona per WHERE per.cedula=" + cedula;
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		return per;
 	}
 
+	
 }

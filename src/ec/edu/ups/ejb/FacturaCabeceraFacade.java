@@ -31,5 +31,4 @@ public class FacturaCabeceraFacade extends AbstractFacade<FacturaCabecera>{
 		return facturasCabecera;
 	}
 	
-	
 }

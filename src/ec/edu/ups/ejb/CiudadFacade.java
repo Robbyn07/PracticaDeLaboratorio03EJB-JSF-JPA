@@ -23,14 +23,14 @@ public class CiudadFacade extends AbstractFacade<Ciudad>{
 	}
 
 	public Ciudad buscarCiudad(String nombre) {
-		String jpql = "SELECT c FROM Ciudad c WHERE c.nombre=" + nombre;
+		String jpql = "SELECT cd FROM Ciudad cd WHERE cd.nombre='" + nombre + "'";
 		Ciudad ciu = (Ciudad) em.createQuery(jpql).getSingleResult();
 		return ciu;
 	}
 	
 	public List<Ciudad> buscarCiudadesPorProvincia (Provincia provincia) {
-		String jpql = "SELECT c FROM Ciudad c WHERE c.provincia.id=" + provincia.getId();
-		List<Ciudad> ciu = em.createQuery(jpql).getResultList();
-		return ciu;
+		String jpql = "SELECT cd FROM Ciudad cd WHERE cd.provincia.id=" + provincia.getId();
+		List<Ciudad> ciudades = em.createQuery(jpql).getResultList();
+		return ciudades;
 	}
 }
