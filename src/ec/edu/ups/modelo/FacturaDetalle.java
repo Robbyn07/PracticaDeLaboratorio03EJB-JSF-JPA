@@ -20,9 +20,11 @@ public class FacturaDetalle implements Serializable {
 	private float total;
 	
 	@ManyToOne
+	@JoinColumn
 	private FacturaCabecera facturaCabecera;
 	
 	@ManyToOne
+	@JoinColumn
 	private Producto producto;
 	
 	public FacturaDetalle(int id, int cantidad, float total, FacturaCabecera facturaCabecera, Producto producto) {

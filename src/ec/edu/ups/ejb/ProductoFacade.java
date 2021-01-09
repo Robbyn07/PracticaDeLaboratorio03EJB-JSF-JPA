@@ -29,7 +29,8 @@ public class ProductoFacade extends AbstractFacade<Producto>{
 	}
 	
 	public List<Producto> buscarProductoPorBodega (int bodega_id) {
-		String jpql = "SELECT pro FROM Producto pro WHERE pro.bodegas.id=" + bodega_id;
+		String jpql = "SELECT pro FROM Producto pro WHERE pro.bodegas.id=" + bodega_id + " AND pro.estado != 'E'";
+		//E = producto eliminado
 		List<Producto> productos = em.createQuery(jpql).getResultList();
 		return productos;
 	}

@@ -24,15 +24,17 @@ public class Producto implements Serializable {
 	private float precio;
 	private int stock;
 	private char estado;
+	
 	@ManyToOne
 	@JoinColumn
 	private Categoria categoria;
+	
 	@ManyToMany
 	@JoinColumn
 	private List<Bodega> bodegas = new ArrayList<Bodega>();
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
-    private List<FacturaDetalle> facturasDetallesList;
+    private List<FacturaDetalle> facturaDetalles;
 	
 	public Producto(int id, String nombre, float precio, int stock, char estado, Categoria categoria) {
 		this.setId(id);
@@ -107,6 +109,18 @@ public class Producto implements Serializable {
 		this.bodegas.add(bodegas);
 	}
 
+	public List<FacturaDetalle> getFacturaDetalles() {
+		return facturaDetalles;
+	}
+
+	public void setFacturaDetalles(List<FacturaDetalle> facturaDetalles) {
+		this.facturaDetalles = facturaDetalles;
+	}
+	
+	public void addFacturaDetalles(FacturaDetalle facturaDetalles) {
+		this.facturaDetalles.add(facturaDetalles);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

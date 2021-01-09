@@ -22,6 +22,7 @@ public class Ciudad implements Serializable {
 	String nombre;
 	
 	@ManyToOne
+	@JoinColumn
 	private Provincia provincia;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "ciudad")

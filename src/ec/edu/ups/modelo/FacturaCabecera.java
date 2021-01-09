@@ -14,7 +14,6 @@ import javax.persistence.*;
 
 public class FacturaCabecera implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -26,6 +25,7 @@ public class FacturaCabecera implements Serializable {
 	private float iva;
 	private char estado;
 	@ManyToOne
+	@JoinColumn
 	private Persona persona;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "facturaCabecera")

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.Bodega;
+import ec.edu.ups.modelo.Ciudad;
 import ec.edu.ups.modelo.Producto;
 
 public class BodegaFacade extends AbstractFacade<Bodega>{
@@ -28,8 +29,8 @@ public class BodegaFacade extends AbstractFacade<Bodega>{
 		return bod;
 	}
 	
-	public List<Bodega> buscarBodegaPorCiudad (int ciudad_id) {
-		String jpql = "SELECT b FROM Bodega b WHERE b.ciudad.id=" + ciudad_id;
+	public List<Bodega> buscarBodegaPorCiudad (Ciudad ciudad) {
+		String jpql = "SELECT b FROM Bodega b WHERE b.ciudad.id=" + ciudad.getId();
 		List<Bodega> bodegas = em.createQuery(jpql).getResultList();
 		return bodegas;
 	}
