@@ -42,6 +42,7 @@ public class Producto implements Serializable {
 		this.setStock(stock);
 		this.setEstado(estado);
 		this.setCategoria(categoria);
+		
 		bodegas = new ArrayList<Bodega>();
 	}
 	

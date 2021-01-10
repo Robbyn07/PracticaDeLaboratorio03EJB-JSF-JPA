@@ -68,7 +68,7 @@ public class CrearTablas implements Serializable{
 	
 		//Usuarios
 		ejbPersonaFacade.create(new Persona(0, "Pablo", "Loja", "0107137408", "Cuenca", "0998476387", "plojam@est.ups.edu.ec", "ploja",'E','H'));
-		ejbPersonaFacade.create(new Persona(0, "John", "Macao", "01", "Cuenca", "0989449535", "jmacaog@est.ups.edu.ec", "jmacao", 'A' ,'H'));
+		ejbPersonaFacade.create(new Persona(0, "John", "Macao", "0105824478", "Cuenca", "0989449535", "jmacaog@est.ups.edu.ec", "jmacao", 'A' ,'H'));
 		ejbPersonaFacade.create(new Persona(0, "Robbyn", "Reyes", "1900848886", "Zamora", "0969784090", "rreyesd@est.ups.edu.ec", "rreyes", 'C', 'H'));
 		
 		//Provincias
@@ -117,6 +117,7 @@ public class CrearTablas implements Serializable{
 		ejbBodegaFacade.create(bod1);
 		ejbBodegaFacade.create(bod2);
 		
+		/*
 		ejbProductoFacade.create(prod1);
 		ejbProductoFacade.create(prod2);
 		ejbProductoFacade.create(prod3);
@@ -125,7 +126,7 @@ public class CrearTablas implements Serializable{
 		ejbProductoFacade.create(prod6);
 		ejbProductoFacade.create(prod7);
 		ejbProductoFacade.create(prod8);
-		
+		*/
 	}
 
 }
