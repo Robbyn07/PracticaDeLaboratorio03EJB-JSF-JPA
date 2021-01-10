@@ -30,7 +30,6 @@ public class Producto implements Serializable {
 	private Categoria categoria;
 	
 	@ManyToMany(mappedBy = "productos")
-	@JoinColumn
 	private List<Bodega> bodegas;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
@@ -43,6 +42,7 @@ public class Producto implements Serializable {
 		this.setStock(stock);
 		this.setEstado(estado);
 		this.setCategoria(categoria);
+		bodegas = new ArrayList<Bodega>();
 	}
 	
 	public Producto() {

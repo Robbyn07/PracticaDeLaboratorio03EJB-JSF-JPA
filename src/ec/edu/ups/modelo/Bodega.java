@@ -1,6 +1,7 @@
 package ec.edu.ups.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -25,8 +26,8 @@ public class Bodega implements Serializable {
 	@JoinColumn
 	private Ciudad ciudad;
 	
+	@JoinTable
 	@ManyToMany
-	@JoinColumn
 	private List<Producto> productos;
 	
 	public Bodega(int id, String nombre, String direccion, Ciudad ciudad) {
@@ -34,6 +35,8 @@ public class Bodega implements Serializable {
 		this.setNombre(nombre);
 		this.setDireccion(direccion);
 		this.setCiudad(ciudad);
+		
+		productos = new ArrayList<Producto>();
 	}
 	
 	public Bodega() {
@@ -78,6 +81,10 @@ public class Bodega implements Serializable {
 
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
+	}
+	
+	public void addProductos(Producto productos) {
+		this.productos.add(productos);
 	}
    
 	@Override

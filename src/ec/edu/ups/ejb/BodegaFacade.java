@@ -25,7 +25,7 @@ public class BodegaFacade extends AbstractFacade<Bodega>{
 	}
 
 	public Bodega buscarBodega (String nombre) {
-		String jpql = "SELECT b FROM Bodega b WHERE b.nombre=" + nombre;
+		String jpql = "SELECT b FROM Bodega b WHERE b.nombre='" + nombre + "'";
 		Bodega bod = (Bodega) em.createQuery(jpql).getSingleResult();
 		return bod;
 	}

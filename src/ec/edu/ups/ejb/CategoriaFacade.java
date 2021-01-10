@@ -22,9 +22,16 @@ public class CategoriaFacade extends AbstractFacade<Categoria>{
 		return em;
 	}
 
-	public int obtenerCategoriaId(Producto producto) {
-		String jpql = "SELECT cat.id FROM Categoria cat WHERE cat.producto.id=" + producto.getId();
-		int categoria_id = (int) em.createQuery(jpql).getSingleResult();
-		return categoria_id;
+	public Categoria obtenerCategoriaPorID(Producto producto) {
+		String jpql = "SELECT cat FROM Categoria cat WHERE cat.producto.id=" + producto.getId();
+		Categoria cat = (Categoria) em.createQuery(jpql).getSingleResult();
+		return cat;
 	}
+	
+	public Categoria obtenerCategoriaPorNombre(String nombreProducto) {
+		String jpql = "SELECT cat FROM Categoria cat WHERE cat.producto.nombre=" + nombreProducto;
+		Categoria cat = (Categoria) em.createQuery(jpql).getSingleResult();
+		return cat;
+	}
+	
 }
