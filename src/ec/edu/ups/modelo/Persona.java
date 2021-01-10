@@ -38,6 +38,9 @@ public class Persona implements Serializable {
     	this.setId(id);
     	this.setNombre(nombre);
     	this.setApellido(apellido);
+    	this.setCedula(cedula);
+    	this.setDireccion(direccion);
+    	this.setTelefono(telefono);
     	this.setCorreo(correo);
     	this.setContrasena(contrasena);
     	this.setRol(rol);

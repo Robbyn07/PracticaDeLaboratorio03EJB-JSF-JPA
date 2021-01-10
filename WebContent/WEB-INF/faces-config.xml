@@ -6,7 +6,7 @@
     version="2.3">
 	
 	<navigation-rule>
-		<from-view-id>/InicioAdministrador.xhtml</from-view-id>
+		<from-view-id>/InicioEmpleado.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>editarc</from-outcome>
 			<to-view-id>/EditarCliente.xhtml</to-view-id>
@@ -17,7 +17,7 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>eliminarc</from-outcome>
-			<to-view-id>/ElimarCliente.xhtml</to-view-id>
+			<to-view-id>/EliminarCliente.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>generarf</from-outcome>
@@ -44,9 +44,22 @@
 			<to-view-id>/AgregarCliente.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>inicioa</from-outcome>
-			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+			<from-outcome>inicioe</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/EditarCliente.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editarc</from-outcome>
+			<to-view-id>/EditarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioe</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	
 </faces-config>

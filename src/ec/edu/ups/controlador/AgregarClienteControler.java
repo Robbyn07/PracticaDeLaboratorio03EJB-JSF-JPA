@@ -1,5 +1,7 @@
 package ec.edu.ups.controlador;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -9,7 +11,7 @@ import ec.edu.ups.modelo.Persona;
 
 @Named
 @RequestScoped
-public class AgregarClienteControler {
+public class AgregarClienteControler implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -31,7 +33,7 @@ public class AgregarClienteControler {
     		if(personaComprobar==null) {
     			Persona persona = new Persona(0, nombre, apellido, cedula, direccion, telefono, correo, "nohay", 'C', 'H');
     			ejbPersonaFacade.create(persona);
-    			return "inicioa";
+    			return "inicioe";
     		}else {
     			return "agregarc";
     		}
@@ -41,7 +43,7 @@ public class AgregarClienteControler {
     }
     
     public String salir() {
-    	return "inicioa";
+    	return "inicioe";
     }
     
 	public String getNombre() {

@@ -10,7 +10,54 @@
 </h:head>
 <h:body>
     
-    <h1>Editar cliente xd</h1>
+    <script type="text/javascript">
+    	function cargar(){
+    		document.getElementById("editar").style.display = "inline";
+    	}
+    </script>
+    
+    <h:form>
+	    <h:panelGrid columns="2">
+	    	<label>Cedula: </label>
+	    	<h:inputText id="cedula" value="#{editarClienteControler.cedulaBuscar}" cols="2" />
+	    	<h:commandButton value="Buscar cliente" action="#{editarClienteControler.buscarPersona}" onclick="cargar()"/>
+    		<h:commandButton value="Salir" action="#{editarClienteControler.redirigir('inicioe')}"/>
+	    </h:panelGrid>
+    </h:form>
+    
+    <h:form id="editar" style="#{editarClienteControler.visibilidad}">
+	    <h:panelGrid columns="2">
+	    	<label>Cedula: </label>
+	    	<h:outputText value="#{editarClienteControler.cedula}" cols="2" />
+	    	<label>Nombre: </label>
+			<h:inputText id="nombre" value="#{editarClienteControler.nombre}" cols="2">
+				<f:ajax render="nombre" event="keyup" execute="@this" />
+			</h:inputText>
+    		<label>Apellido: </label>
+    		<h:inputText id="apellido" value="#{editarClienteControler.apellido}" cols="2" >
+    			<f:ajax render="apellido" event="keyup" execute="@this" />
+    		</h:inputText>
+    		<label>Direccion: </label>
+    		<h:inputText id="direccion" value="#{editarClienteControler.direccion}" cols="2">
+    			<f:ajax render="direccion" event="keyup" execute="@this" />
+    		</h:inputText>
+    		<label>Telefono: </label>
+    		<h:inputText id="telefono" value="#{editarClienteControler.telefono}" cols="2">
+    			<f:ajax render="telefono" event="keyup" execute="@this" />
+    		</h:inputText>
+    		<label>Correo: </label>
+    		<h:inputText id="correo" value="#{editarClienteControler.correo}" cols="2">
+    			<f:ajax render="correo" event="keyup" execute="@this" />
+    		</h:inputText>
+    		
+    		<h:commandButton value="Editar Cliente" action="#{editarClienteControler.editarCliente()}"/>
+    		
+    		
+    		<h:inputText id="cedula" value="#{editarClienteControler.cedula}" style="visibility:hidden" cols="2">
+    			<f:ajax render="cedula" event="keyup" execute="@this" />
+    		</h:inputText>
+	    </h:panelGrid>
+    </h:form>
   	
 </h:body>
 </html>
