@@ -2,6 +2,7 @@ package ec.edu.ups.ejb;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -9,6 +10,7 @@ import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Ciudad;
 import ec.edu.ups.modelo.Producto;
 
+@Stateless
 public class BodegaFacade extends AbstractFacade<Bodega>{
 
 	public BodegaFacade() {

@@ -2,12 +2,14 @@ package ec.edu.ups.ejb;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.Ciudad;
 import ec.edu.ups.modelo.Provincia;
 
+@Stateless
 public class CiudadFacade extends AbstractFacade<Ciudad>{
 
 	public CiudadFacade() {

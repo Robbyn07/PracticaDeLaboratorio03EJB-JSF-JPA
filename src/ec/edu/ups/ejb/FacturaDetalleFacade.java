@@ -2,12 +2,14 @@ package ec.edu.ups.ejb;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.FacturaDetalle;
 import ec.edu.ups.modelo.Producto;
 
+@Stateless
 public class FacturaDetalleFacade extends AbstractFacade<FacturaDetalle>{
 
 	public FacturaDetalleFacade() {
