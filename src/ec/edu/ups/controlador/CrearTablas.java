@@ -1,6 +1,7 @@
 package ec.edu.ups.controlador;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -129,4 +130,13 @@ public class CrearTablas implements Serializable{
 		*/
 	}
 
+	
+	public void lsitarBodegas() {
+		 List<Producto> sta = ejbBodegaFacade.find(1).getProductos();
+
+	        for (Producto producto : sta) {
+	            System.out.println(producto.getNombre());
+	        }
+	}
+	
 }

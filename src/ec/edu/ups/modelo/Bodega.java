@@ -26,8 +26,12 @@ public class Bodega implements Serializable {
 	@JoinColumn
 	private Ciudad ciudad;
 	
-	@JoinTable
-	@ManyToMany
+	@JoinTable(
+			name = "bodega_productos",
+			joinColumns = @JoinColumn(name = "FK_Bodega", nullable = false),
+			inverseJoinColumns = @JoinColumn(name = "FK_Producto", nullable = false)
+	)
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Producto> productos;
 	
 	public Bodega(int id, String nombre, String direccion, Ciudad ciudad) {
