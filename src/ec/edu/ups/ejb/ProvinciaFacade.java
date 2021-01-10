@@ -4,7 +4,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Provincia;
 
 @Stateless

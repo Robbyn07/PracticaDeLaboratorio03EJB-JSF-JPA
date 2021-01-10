@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Ciudad;
-import ec.edu.ups.modelo.Producto;
 
 @Stateless
 public class BodegaFacade extends AbstractFacade<Bodega>{

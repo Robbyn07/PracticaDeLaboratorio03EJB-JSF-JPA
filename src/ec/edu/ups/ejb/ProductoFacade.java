@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import ec.edu.ups.modelo.Persona;
 import ec.edu.ups.modelo.Producto;
 
 @Stateless
