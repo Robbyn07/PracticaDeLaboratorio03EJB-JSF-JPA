@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16102408075270" configfile="/PracticaDeLaboratorio03EJB-JSF-JPA/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="InicioAdministrados" id="pf16102415300081" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf161024286200814 pf161024286200815 pf161024348718018 pf161024359723620 pf161024359723621 pf161024361116924 pf161024362695326" path="/InicioAdministrador.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EditarCliente.xhtml" id="pf161024286200816" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf161024286200814" path="/EditarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AgregarCliente.xhtml" id="pf161024286200817" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf161024286200815" path="/AgregarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ElimarCliente.xhtml" id="pf161024348718019" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf161024348718018" path="/ElimarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="GenerarFactura.xhtml" id="pf161024359723622" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf161024359723620" path="/GenerarFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AnularFactura.xhtml" id="pf161024359723623" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf161024359723621" path="/AnularFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="BuscarFactura.xhtml" id="pf161024361116925" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf161024361116924" path="/BuscarFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" id="pf161024362695327" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf161024362695326" path="/inicio.xhtml"/>
+  <links id="pf161024286200814" target="pf161024286200816" source="pf16102415300081" outcome="editarc"/>
+  <links id="pf161024286200815" target="pf161024286200817" source="pf16102415300081" outcome="agregarc"/>
+  <links id="pf161024348718018" target="pf161024348718019" source="pf16102415300081" outcome="eliminarc"/>
+  <links id="pf161024359723620" target="pf161024359723622" source="pf16102415300081" outcome="generarf"/>
+  <links id="pf161024359723621" target="pf161024359723623" source="pf16102415300081" outcome="anularf"/>
+  <links id="pf161024361116924" target="pf161024361116925" source="pf16102415300081" outcome="buscarf"/>
+  <links id="pf161024362695326" target="pf161024362695327" source="pf16102415300081" outcome="salir"/>
+</pageflow:Pageflow>

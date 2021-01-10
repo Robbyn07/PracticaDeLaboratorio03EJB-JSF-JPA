@@ -38,6 +38,7 @@ public class CrearTablas implements Serializable{
 	private CiudadFacade ejbCiudadFacade;
 	
 	public void agregarDatos() {
+		System.out.println("jeeeelp");
 		ejbCategoriaFacade.create(new Categoria(0,"Despensa"));
 		ejbCategoriaFacade.create(new Categoria(0,"Aseo Hogar"));
 		ejbCategoriaFacade.create(new Categoria(0,"Vinos y Licores"));

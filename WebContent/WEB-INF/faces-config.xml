@@ -4,5 +4,37 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
     version="2.3">
-
+	
+	<navigation-rule>
+		<from-view-id>/InicioAdministrador.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editarc</from-outcome>
+			<to-view-id>/EditarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>agregarc</from-outcome>
+			<to-view-id>/AgregarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>eliminarc</from-outcome>
+			<to-view-id>/ElimarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>generarf</from-outcome>
+			<to-view-id>/GenerarFactura.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>anularf</from-outcome>
+			<to-view-id>/AnularFactura.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>buscarf</from-outcome>
+			<to-view-id>/BuscarFactura.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>salir</from-outcome>
+			<to-view-id>/inicio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>
