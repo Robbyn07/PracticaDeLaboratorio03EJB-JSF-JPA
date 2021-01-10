@@ -37,4 +37,16 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/AgregarCliente.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agregarc</from-outcome>
+			<to-view-id>/AgregarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 </faces-config>

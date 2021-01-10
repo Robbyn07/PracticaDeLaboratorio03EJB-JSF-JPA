@@ -48,10 +48,10 @@ public class CrearTablas implements Serializable{
 		ejbCategoriaFacade.create(new Categoria(0,"Herramientas"));
 		ejbCategoriaFacade.create(new Categoria(0,"Reposteria"));
 	
-		ejbPersonaFacade.create(new Persona(0, "Pablo", "Loja", "0107137408", "Cuenca", "0998476387", "plojam@est.ups.edu.ec", "ploja",'E'));
-		ejbPersonaFacade.create(new Persona(0, "John", "Macao", "01", "Cuenca", "0989449535", "jmacaog@est.ups.edu.ec", "jmacao", 'A'));
-		ejbPersonaFacade.create(new Persona(0, "Robbyn", "Reyes", "1900848886", "Zamora", "0969784090", "rreyesd@est.ups.edu.ec", "rreyes", 'C'));
-	
+		ejbPersonaFacade.create(new Persona(0, "Pablo", "Loja", "0107137408", "Cuenca", "0998476387", "plojam@est.ups.edu.ec", "ploja",'E','H'));
+		ejbPersonaFacade.create(new Persona(0, "John", "Macao", "01", "Cuenca", "0989449535", "jmacaog@est.ups.edu.ec", "jmacao", 'A' ,'H'));
+		ejbPersonaFacade.create(new Persona(0, "Robbyn", "Reyes", "1900848886", "Zamora", "0969784090", "rreyesd@est.ups.edu.ec", "rreyes", 'C', 'H'));
+		
 		Provincia prov1 = new Provincia(0, "Azuay");
 		Provincia prov2 = new Provincia(0, "Zamora Chinchipe");
 		Provincia prov3 = new Provincia(0, "Loja");
@@ -63,5 +63,13 @@ public class CrearTablas implements Serializable{
 		ejbCiudadFacade.create(new Ciudad(0, "Cuenca", prov1));
 		ejbCiudadFacade.create(new Ciudad(0, "Zamora", prov2));
 		ejbCiudadFacade.create(new Ciudad(0, "Loja", prov3));
+	}
+	
+	public CategoriaFacade getEjbCategoriaFacade() {
+		return ejbCategoriaFacade;
+	}
+
+	public void setEjbCategoriaFacade(CategoriaFacade ejbCategoriaFacade) {
+		this.ejbCategoriaFacade = ejbCategoriaFacade;
 	}
 }

@@ -29,27 +29,19 @@ public class Persona implements Serializable {
     private char rol;
     private char estado;
 	
-    public char getEstado() {
-		return estado;
-	}
-
-	public void setEstado(char estado) {
-		this.estado = estado;
-	}
+    
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<FacturaCabecera> facturasCab= new ArrayList<FacturaCabecera>();
     
-    public Persona(int id, String nombre, String apellido, String cedula, String direccion, String telefono, String correo, String contrasena, char rol) {
+	public Persona(int id, String nombre, String apellido, String cedula, String direccion, String telefono, String correo, String contrasena, char rol, char estado) {
     	this.setId(id);
     	this.setNombre(nombre);
     	this.setApellido(apellido);
-    	this.setCedula(cedula);
-    	this.setDireccion(direccion);
-    	this.setTelefono(telefono);
     	this.setCorreo(correo);
     	this.setContrasena(contrasena);
     	this.setRol(rol);
+    	this.setEstado(estado);
     }
     
 	public Persona() {
@@ -134,6 +126,14 @@ public class Persona implements Serializable {
 
 	public void setFacturasCab(List<FacturaCabecera> facturasCab) {
 		this.facturasCab = facturasCab;
+	}
+	
+	public char getEstado() {
+		return estado;
+	}
+
+	public void setEstado(char estado) {
+		this.estado = estado;
 	}
 	
 	@Override

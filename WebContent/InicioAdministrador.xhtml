@@ -11,13 +11,13 @@
 <h:body>
     
     <h:form>
-    	<h:commandButton value="Crear Cliente" action="#{inicioAdministradorControler.agregarCliente}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.editarCliente}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.eliminarCliente}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.generarFactura}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.anularFactura}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.buscarFactura}"/>
-    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.salir}"/>
+    	<h:commandButton value="Crear Cliente" action="#{inicioAdministradorControler.redirigir('agregarc')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('editarc')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('eliminarc')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('generarf')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('anularf')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('buscarf')}"/>
+    	<h:commandButton value="Editar Cliente" action="#{inicioAdministradorControler.redirigir('salir')}"/>
     </h:form>
     
   	

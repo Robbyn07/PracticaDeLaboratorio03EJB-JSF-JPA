@@ -10,7 +10,25 @@
 </h:head>
 <h:body>
     
-    <h1>Agregar cliente xd</h1>
+    <h:form id="tablaCrearCliente">
+    	<h:panelGrid columns="2">
+    		<label>Nombre: </label>
+			<h:inputText id="nombre" value="#{agregarClienteControler.nombre}" cols="2" />
+    		<label>Apellido: </label>
+    		<h:inputText id="apellido" value="#{agregarClienteControler.apellido}" cols="2" />
+    		<label>Cedula: </label>
+    		<h:inputText id="cedula" value="#{agregarClienteControler.cedula}" cols="2" />
+    		<label>Direccion: </label>
+    		<h:inputText id="direccion" value="#{agregarClienteControler.direccion}" cols="2" />
+    		<label>Telefono: </label>
+    		<h:inputText id="telefono" value="#{agregarClienteControler.telefono}" cols="2" />
+    		<label>Correo: </label>
+    		<h:inputText id="correo" value="#{agregarClienteControler.correo}" cols="2" />
+    		
+    		<h:commandButton value="Salir" action="#{agregarClienteControler.salir}"/>
+    		<h:commandButton value="Agregar Cliente" action="#{agregarClienteControler.agregarUsuario}"/>
+    	</h:panelGrid>
+    </h:form>
   	
 </h:body>
 </html>

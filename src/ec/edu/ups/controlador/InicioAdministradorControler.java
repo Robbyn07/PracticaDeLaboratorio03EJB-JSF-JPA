@@ -13,32 +13,8 @@ public class InicioAdministradorControler implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	public String agregarCliente() {
-		return "agregarc";
-	}
-	
-	public String editarCliente() {
-		return "editarc";
-	}
-	
-	public String eliminarCliente() {
-		return "eliminarc";
-	}
-	
-	public String generarFactura() {
-		return "generarf";
-	}
-	
-	public String anularFactura() {
-		return "anularf";
-	}
-	
-	public String buscarFactura() {
-		return "buscarf";
-	}
-	
-	public String salir() {
-		return "salir";
+	public String redirigir(String pagina) {
+		return pagina;
 	}
 	
 }
