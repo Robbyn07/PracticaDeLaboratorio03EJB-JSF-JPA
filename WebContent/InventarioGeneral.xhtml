@@ -11,31 +11,21 @@
 <h:body>
 
     <h:form>
-    	<h:dataTable value="#{consultaInventarioGeneralControler.listCliente}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
+    	<h:dataTable value="#{consultaInventarioGeneralControler.listProducto}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
+    		<h:column>
+    			<f:facet name="header">Estado</f:facet>#{c.estado}
+    		</h:column>
     		<h:column>
     			<f:facet name="header">Nombre</f:facet>#{c.nombre}
     		</h:column>
     		<h:column>
-    			<f:facet name="header">Apellido</f:facet>#{c.apellido}
+    			<f:facet name="header">Precio</f:facet>#{c.precio}
     		</h:column>
     		<h:column>
-    			<f:facet name="header">Cedula</f:facet>#{c.cedula}
-    		</h:column>
-    		<h:column>
-    			<f:facet name="header">Direccion</f:facet>#{c.direccion}
-    		</h:column>
-    		<h:column>
-    			<f:facet name="header">Telefono</f:facet>#{c.telefono}
-    		</h:column>
-    		<h:column>
-    			<f:facet name="header">Correo</f:facet>#{c.correo}
+    			<f:facet name="header">Stock</f:facet>#{c.stock}
     		</h:column>
     	</h:dataTable>
-    	
-
     </h:form>
-
-
     
 </h:body>
 </html>

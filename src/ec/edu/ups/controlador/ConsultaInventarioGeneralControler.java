@@ -1,8 +1,6 @@
 package ec.edu.ups.controlador;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,88 +8,58 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
-import ec.edu.ups.ejb.PersonaFacade;
-import ec.edu.ups.modelo.Persona;
+import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.ejb.ProductoFacade;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @RequestScoped
-public class ConsultaInventarioGeneralControler  implements Serializable {
-	
+
+public class ConsultaInventarioGeneralControler implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
 	@EJB
-	private PersonaFacade ejbPersonaFacade;
+	private ProductoFacade ejbProductoFacade;
 	
-	private List<Persona> listCliente;
-	private Persona personaSeleccionada = null;
-	private String cedula;
+	private List<Producto> listProducto;
 	
-
+	
 	@PostConstruct
-	public void listar() {
-		listCliente = new ArrayList<Persona>();
-		listCliente = ejbPersonaFacade.findCliente();
-		System.out.println(listCliente.size());
-		
+	public void cargarLista() {
+		listProducto = new ArrayList<Producto>();
+		listProducto = ejbProductoFacade.productosOrdenadosAlfabeticamente();
 	}
 	
 	
-	
-	public String salir() {
-		return "inicioe";
-	}
-	
-	public String eliminar(Persona persona) {
-		try {
-			personaSeleccionada = persona;
-			personaSeleccionada.setEstado('D');
-			ejbPersonaFacade.edit(personaSeleccionada);
-			
-			listar();
-			
-			return "eliminarc";
-		} catch (Exception e) {
-			listar();
-			return "eliminarc";
-		}
-		
-	}
-	
-	
-	public PersonaFacade getEjbPersonaFacade() {
-		return ejbPersonaFacade;
+    public String salir() {
+    	return "inicioa";
+    }
+
+
+	public ProductoFacade getEjbProductoFacade() {
+		return ejbProductoFacade;
 	}
 
-	public void setEjbPersonaFacade(PersonaFacade ejbPersonaFacade) {
-		this.ejbPersonaFacade = ejbPersonaFacade;
+
+	public void setEjbProductoFacade(ProductoFacade ejbProductoFacade) {
+		this.ejbProductoFacade = ejbProductoFacade;
 	}
 
-	public List<Persona> getListCliente() {
-		return listCliente;
+
+	public List<Producto> getListProducto() {
+		return listProducto;
 	}
 
-	public void setListCliente(List<Persona> listCliente) {
-		this.listCliente = listCliente;
+
+	public void setListProducto(List<Producto> listProducto) {
+		this.listProducto = listProducto;
 	}
 
-	public String getCedula() {
-		return cedula;
-	}
-
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
-	}
-
-	public Persona getPersonaSeleccionada() {
-		return personaSeleccionada;
-	}
-
-	public void setPersonaSeleccionada(Persona personaSeleccionada) {
-		this.personaSeleccionada = personaSeleccionada;
-	}
-
-	
-	
+    
 }
+
 
