@@ -11,7 +11,7 @@
 <h:body>
 
     <h:form>
-    	<h:dataTable value="#{ConsultaInventarioGeneralControler.listCliente}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
+    	<h:dataTable value="#{consultaInventarioGeneralControler.listCliente}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
     		<h:column>
     			<f:facet name="header">Nombre</f:facet>#{c.nombre}
     		</h:column>
