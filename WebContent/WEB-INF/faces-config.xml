@@ -86,4 +86,64 @@
 	</navigation-rule>
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<navigation-rule>
+		<from-view-id>/InicioAdministrador.xhtml</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>inventariog</from-outcome>
+			<to-view-id>/InventarioGeneral.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>agregarp</from-outcome>
+			<to-view-id>/ .xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>editarp</from-outcome>
+			<to-view-id>/ .xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>buscarp</from-outcome>
+			<to-view-id>/ .xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>eliminarp</from-outcome>
+			<to-view-id>/ .xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>salir</from-outcome>
+			<to-view-id>/inicio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/InventarioGeneral.xhtml</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	
+	
 </faces-config>
