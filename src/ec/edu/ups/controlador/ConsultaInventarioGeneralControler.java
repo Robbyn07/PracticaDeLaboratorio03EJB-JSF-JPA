@@ -16,7 +16,7 @@ import ec.edu.ups.modelo.Persona;
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @RequestScoped
-public class EliminarClienteControler implements Serializable {
+public class ConsultaInventarioGeneralControler  implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -27,14 +27,16 @@ public class EliminarClienteControler implements Serializable {
 	private Persona personaSeleccionada = null;
 	private String cedula;
 	
-	
+
 	@PostConstruct
-	public void cargarLista() {
+	public void listar() {
 		listCliente = new ArrayList<Persona>();
 		listCliente = ejbPersonaFacade.findCliente();
 		System.out.println(listCliente.size());
+		
 	}
-
+	
+	
 	
 	public String salir() {
 		return "inicioe";
@@ -46,11 +48,11 @@ public class EliminarClienteControler implements Serializable {
 			personaSeleccionada.setEstado('D');
 			ejbPersonaFacade.edit(personaSeleccionada);
 			
-			cargarLista();
+			listar();
 			
 			return "eliminarc";
 		} catch (Exception e) {
-			cargarLista();
+			listar();
 			return "eliminarc";
 		}
 		
@@ -92,3 +94,4 @@ public class EliminarClienteControler implements Serializable {
 	
 	
 }
+
