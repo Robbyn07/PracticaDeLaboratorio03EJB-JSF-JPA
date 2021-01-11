@@ -72,6 +72,9 @@
     				<f:facet name="header" id="proid">Codigo</f:facet>#{p.id}
     			</h:column>
     			<h:column>
+    				<f:facet name="header" id="pronombre">Categoria</f:facet>#{p.categoria.nombre}
+    			</h:column>
+    			<h:column>
     				<f:facet name="header" id="pronombre">Nombre</f:facet>#{p.nombre}
     			</h:column>
     			<h:column>
@@ -105,6 +108,9 @@
     			
    		<div id="listaDetalles">
     		<h:dataTable value="#{generarFacturaControler.detalle}" var="d" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+    			<h:column>
+    				<f:facet name="header" id="proid">Bodega</f:facet>#{d.producto.bodegas.get(0).nombre}
+    			</h:column>
     			<h:column>
     				<f:facet name="header" id="proid">Producto</f:facet>#{d.producto.nombre}
     			</h:column>

@@ -29,7 +29,6 @@ public class GenerarFacturaControler implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	//categoria, producto, bodega, ciudad, provincia
 	
 	@EJB
 	private CategoriaFacade ejbCategoriaFacade;
@@ -62,7 +61,7 @@ public class GenerarFacturaControler implements Serializable {
 	private String categoria="";
 	private String producto="";
 	
-	private List<Producto> productosEscoger = new ArrayList<Producto>();
+	public static List<Producto> productosEscoger = new ArrayList<Producto>();
 	public static List<FacturaDetalle> detalle = new ArrayList<FacturaDetalle>();
 	private Persona persona = new Persona();
 	public static FacturaCabecera cabecera = new FacturaCabecera();
@@ -79,7 +78,7 @@ public class GenerarFacturaControler implements Serializable {
 		
 		productos = ejbProductoFacade.findAll();
 		
-		productosEscoger = ejbProductoFacade.findAll();
+		//productosEscoger = ejbProductoFacade.findAll();
 		
 		stringCategoria(categorias);
 		stringProducto(productos);
@@ -123,6 +122,7 @@ public class GenerarFacturaControler implements Serializable {
 	public String salir() {
 		detalle = new ArrayList<FacturaDetalle>();
 		cabecera = new FacturaCabecera();
+		productosEscoger = new ArrayList<Producto>();
 		return "inicioe";
 	}
 	
@@ -137,11 +137,18 @@ public class GenerarFacturaControler implements Serializable {
 			cabecera.setPersona(persona);
 			cabecera.setFacturasDetalle(detalle);
 			
+			for(int i=0; i<detalle.size(); i++) {
+				Producto produActualizar = ejbProductoFacade.find(detalle.get(i).getProducto().getId());
+				produActualizar.setStock(produActualizar.getStock()-detalle.get(i).getCantidad());
+				ejbProductoFacade.edit(produActualizar);
+			}
+			
 			ejbFacturaCabecera.create(cabecera);
 			
 
 			detalle = new ArrayList<FacturaDetalle>();
 			cabecera = new FacturaCabecera();
+			productosEscoger = new ArrayList<Producto>();
 			
 			return "inicioe";
 			

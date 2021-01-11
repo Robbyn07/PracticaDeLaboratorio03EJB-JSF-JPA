@@ -85,9 +85,25 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/AnularFactura.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>anularf</from-outcome>
+			<to-view-id>/AnularFactura.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioe</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
-	
-	
+	<navigation-rule>
+		<from-view-id>/BuscarFactura.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inicioe</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	
 	
 	

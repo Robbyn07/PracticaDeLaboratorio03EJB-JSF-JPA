@@ -33,4 +33,12 @@ public class FacturaCabeceraFacade extends AbstractFacade<FacturaCabecera>{
 		return facturasCabecera;
 	}
 	
+	public List<FacturaCabecera> buscarPorClienteCedula(String cedula) {
+		String jpql = "SELECT fc FROM FacturaCabecera fc WHERE fc.persona.cedula='" + cedula + "' AND fc.estado != 'A'";
+		//A = estado anulado
+		//H = estado habilitado
+		List<FacturaCabecera> facturasCabecera = em.createQuery(jpql).getResultList();
+		return facturasCabecera;
+	}
+	
 }
