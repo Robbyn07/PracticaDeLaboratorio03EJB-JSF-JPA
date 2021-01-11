@@ -73,5 +73,17 @@
 		</navigation-case>
 	</navigation-rule>
 	
+	<navigation-rule>
+		<from-view-id>/GenerarFactura.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>generarf</from-outcome>
+			<to-view-id>/GenerarFactura.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioe</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	
 </faces-config>

@@ -4,12 +4,12 @@
   <nodes xsi:type="pageflow:PFPage" name="EditarCliente.xhtml" x="338" y="178" id="pf161024286200816" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf16103012729080 pf16103012729091" inlinks="pf16103012729092 pf16103012729080" path="/EditarCliente.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="AgregarCliente.xhtml" x="338" y="562" id="pf161024286200817" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf161024676143629 pf16103012729093" inlinks="pf161024676143629 pf16103012729094" path="/AgregarCliente.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="ElimarCliente.xhtml" x="122" y="562" id="pf161024348718019" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" path="/ElimarCliente.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="GenerarFactura.xhtml" x="338" y="946" id="pf161024359723622" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf16103012729095" path="/GenerarFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="GenerarFactura.xhtml" x="338" y="946" id="pf161024359723622" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf161034361341414 pf161034361341415" inlinks="pf16103012729095 pf161034361341415" path="/GenerarFactura.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="AnularFactura.xhtml" x="338" y="1330" id="pf161024359723623" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf16103012729096" path="/AnularFactura.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="BuscarFactura.xhtml" x="338" y="1714" id="pf161024361116925" referenceLink="//@navigationRule.0/@navigationCase.5/@toViewId|" inlinks="pf16103012729097" path="/BuscarFactura.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" x="338" y="2098" id="pf161024362695327" referenceLink="//@navigationRule.0/@navigationCase.6/@toViewId|" inlinks="pf16103012729098" path="/inicio.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="InicioEmpleado.xhtml" x="122" y="946" id="pf16103012729099" referenceLink="//@navigationRule.3/@navigationCase.1/@toViewId|" outlinks="pf16103012729092 pf16103012729094 pf161030127290910 pf16103012729095 pf16103012729096 pf16103012729097 pf16103012729098" inlinks="pf16103012729093 pf16103012729091 pf161030127290911" path="/InicioEmpleado.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="EliminarCliente.xhtml" x="338" y="2482" id="pf161030127290912" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf161030127290911 pf161030127290913" inlinks="pf161030127290910 pf161030127290913" path="/EliminarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="InicioEmpleado.xhtml" x="122" y="946" id="pf16103012729099" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" outlinks="pf16103012729092 pf16103012729094 pf161030127290910 pf16103012729095 pf16103012729096 pf16103012729097 pf16103012729098" inlinks="pf16103012729093 pf16103012729091 pf161030127290911 pf161034361341414" path="/InicioEmpleado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EliminarCliente.xhtml" x="338" y="2482" id="pf161030127290912" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf161030127290911 pf161030127290913" inlinks="pf161030127290910 pf161030127290913" path="/EliminarCliente.xhtml"/>
   <links id="pf16103012729092" target="pf161024286200816" source="pf16103012729099" outcome="editarc"/>
   <links id="pf16103012729094" target="pf161024286200817" source="pf16103012729099" outcome="agregarc"/>
   <links id="pf161030127290910" target="pf161030127290912" source="pf16103012729099" outcome="eliminarc"/>
@@ -31,4 +31,6 @@
   </links>
   <links id="pf161030127290911" target="pf16103012729099" source="pf161030127290912" outcome="inicioe"/>
   <links id="pf161030127290913" target="pf161030127290912" source="pf161030127290912" outcome="eliminarc"/>
+  <links id="pf161034361341414" target="pf16103012729099" source="pf161024359723622" outcome="inicioe"/>
+  <links id="pf161034361341415" target="pf161024359723622" source="pf161024359723622" outcome="generarf"/>
 </pageflow:Pageflow>

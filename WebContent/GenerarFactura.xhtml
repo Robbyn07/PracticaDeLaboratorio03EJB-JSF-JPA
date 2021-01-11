@@ -10,6 +10,138 @@
 </h:head>
 <h:body>
     
+    <script type="text/javascript">
+    	function indicador(data){
+    		if(data.status =="begin")
+    			document.getElementById("id5").style.display = "inline";
+    		else if (data.status == "success")
+    			document.getElementById("id5").style.display = "none";
+    	}
+    </script>
+    
+    
+    
+    <h:form>
+    	
+    	<h:commandButton value="Salir" action="#{generarFacturaControler.salir}">
+			</h:commandButton>
+    	
+    	<div id="datosCliente">
+    		<h:inputText id="ced" value="#{generarFacturaControler.cedula}" type="text"/>
+	    	<h:commandButton value="Buscar Cliente" action="#{generarFacturaControler.buscarPersona}" update="list:infoPersona" cols="2">
+	    		<f:ajax render="cedulah nombrecli apellidocli direccioncli telefonocli correocli" execute="ced" />
+	    	</h:commandButton>
+	    	<br></br>
+	    	<label>Cedula: </label>
+	    	<h:inputText id="cedulah" value="#{generarFacturaControler.cedula}" cols="2"/>
+	    	<label>Nombre: </label>
+	   		<h:inputText id="nombrecli" value="#{generarFacturaControler.nombre}" cols="2"/>
+	   		<label>Apellido: </label>
+	   		<h:inputText id="apellidocli" value="#{generarFacturaControler.apellido}" cols="2"/>
+	   		<br></br>
+	    	<label>Direccion: </label>
+	   		<h:inputText id="direccioncli" value="#{generarFacturaControler.direccion}" cols="2"/>
+	   		<label>Telefono: </label>
+	   		<h:inputText id="telefonocli" value="#{generarFacturaControler.telefono}" cols="2"/>
+	   		<label>Correo: </label>
+	   		<h:inputText id="correocli" value="#{generarFacturaControler.correo}" cols="2"/>
+	   		<br></br>
+    	</div>
+    	
+	    	
+   		<div id="buscarProductos">
+   			<h:selectOneMenu value="#{generarFacturaControler.categoria}">
+	    		<f:selectItems value="#{generarFacturaControler.listCategoria}"/>
+	    		<f:ajax render="producto"/>
+	    	</h:selectOneMenu>
+	    	
+	    	<h:selectOneMenu value="#{generarFacturaControler.producto}" id="producto">
+	    		<f:selectItems value="#{generarFacturaControler.listProducto}"/>
+	    		<f:ajax render="bodega ciudad provincia"/>
+	    	</h:selectOneMenu>
+	    	
+	    	<h:commandButton value="Filtrar" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos">
+	    	</h:commandButton>
+   		</div>
+    	
+    	
+    	
+    	<div >
+    		<h:dataTable id="listaProductos" value="#{generarFacturaControler.productosEscoger}" var="p" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+    			<h:column>
+    				<f:facet name="header" id="proid">Codigo</f:facet>#{p.id}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="pronombre">Nombre</f:facet>#{p.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="propu">Precio unitario</f:facet>#{p.precio}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="prostock">Stock</f:facet>#{p.stock}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="procant">Cantidad</f:facet>
+    				<h:inputText id="procantidad" value="#{p.stock}"></h:inputText>
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="prosbodega">Bodega</f:facet>#{p.bodegas.get(0).nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proprovincia">Provincia</f:facet>#{p.bodegas.get(0).ciudad.provincia.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="prociudad">Ciudad</f:facet>#{p.bodegas.get(0).ciudad.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proagregar">Agregar</f:facet>
+					<h:commandButton value="Agregar" action="#{generarFacturaControler.agregarDetalle(p)}" update="list:listaProductos buscarProductos">
+					</h:commandButton>
+    			</h:column>
+    		</h:dataTable>
+    	</div>
+	    	
+    	
+    			
+   		<div id="listaDetalles">
+    		<h:dataTable value="#{generarFacturaControler.detalle}" var="d" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+    			<h:column>
+    				<f:facet name="header" id="proid">Producto</f:facet>#{d.producto.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Cantidad</f:facet>#{d.cantidad}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Total</f:facet>#{d.total}
+    			</h:column>
+    		</h:dataTable>
+    		
+			
+			<label>SUBTOTAL: </label>
+	    	<h:inputText id="subtotal" value="#{generarFacturaControler.cabecera.subtotal}" disabled="true" cols="2"/>
+	    	<br></br>
+			<label>IVA: </label>
+	    	<h:inputText id="iva" value="#{generarFacturaControler.cabecera.iva}" disabled="true" cols="2"/>
+	    	<br></br>
+	    	<label>TOTAL: </label>
+	    	<h:inputText id="total" value="#{generarFacturaControler.cabecera.total}" disabled="true" cols="2"/>
+			<br></br>
+			<h:commandButton value="Enviar" action="#{generarFacturaControler.enviarFactura}" update="list:listaProductos buscarProductos">
+			</h:commandButton>
+			
+    	</div>
+    			
+    	
+	    	
+    	
+    	<span id="id5" style="display: none;"></span>
+    	
+    </h:form>
+    
+    
+    
+    
+    
     
   	
 </h:body>

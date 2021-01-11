@@ -20,9 +20,9 @@ public class FacturaCabecera implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private Date fecha;
-	private float subtotal;
-	private float total;
-	private float iva;
+	private float subtotal=0;
+	private float total=0;
+	private float iva=0;
 	private char estado;
 	@ManyToOne
 	@JoinColumn

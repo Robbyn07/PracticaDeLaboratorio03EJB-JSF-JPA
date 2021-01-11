@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Ciudad;
+import ec.edu.ups.modelo.Producto;
 
 @Stateless
 public class BodegaFacade extends AbstractFacade<Bodega>{
@@ -35,4 +36,11 @@ public class BodegaFacade extends AbstractFacade<Bodega>{
 		List<Bodega> bodegas = em.createQuery(jpql).getResultList();
 		return bodegas;
 	}
+	
+	public List<Bodega> buscarBodegaPorProducto (String producto) {
+		String jpql = "SELECT b FROM Bodega b WHERE b.producto.nombre='" + producto +"'";
+		List<Bodega> bodegas = em.createQuery(jpql).getResultList();
+		return bodegas;
+	}
+	
 }

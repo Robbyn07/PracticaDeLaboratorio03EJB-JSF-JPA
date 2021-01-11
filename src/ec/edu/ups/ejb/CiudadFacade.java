@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Ciudad;
 import ec.edu.ups.modelo.Provincia;
 
@@ -35,4 +36,11 @@ public class CiudadFacade extends AbstractFacade<Ciudad>{
 		List<Ciudad> ciudades = em.createQuery(jpql).getResultList();
 		return ciudades;
 	}
+	
+	public Ciudad buscarCiudadesPorBodega (String bodega) {
+		String jpql = "SELECT cd FROM Ciudad cd WHERE cd.bodega.nombre='" + bodega + "'";
+		Ciudad ciudad = (Ciudad) em.createQuery(jpql).getSingleResult();
+		return ciudad;
+	}
+	
 }
