@@ -8,7 +8,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
+import ec.edu.ups.modelo.Categoria;
 import ec.edu.ups.modelo.Producto;
+import ec.edu.ups.ejb.CategoriaFacade;
 import ec.edu.ups.ejb.ProductoFacade;
 
 import java.util.ArrayList;
@@ -25,12 +27,19 @@ public class ConsultaInventarioGeneralControler implements Serializable {
 	@EJB
 	private ProductoFacade ejbProductoFacade;
 	
+	@EJB
+	private CategoriaFacade ejbCategoriaFacade;
+	
 	private List<Producto> listProducto;
+	private List<Categoria> listCategoria;
+	private Categoria categoria;
+	private Producto producto;
 	
 	
 	@PostConstruct
 	public void cargarLista() {
 		listProducto = new ArrayList<Producto>();
+		listCategoria = new ArrayList<Categoria>();
 		listProducto = ejbProductoFacade.productosOrdenadosAlfabeticamente();
 	}
 	
