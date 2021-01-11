@@ -7,11 +7,13 @@
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
     <title>Inicio</title>
+    <h:outputStylesheet library="css" name="/PracticaDeLaboratorio03EJB-JSF-JPA/argon-dashboard/assets/css/argon.css?v=1.2.0"/>
 </h:head>
 <h:body>
     
     <h:form>
     	<h:commandButton value="Crear Tablas" action="#{crearTablas.agregarDatos}"/>
+    	<h:commandButton action="/PracticaDeLaboratorio03EJB-JSF-JPA/login.jsf" value="Iniciar Sesion" />
     </h:form>
    
 </h:body>
