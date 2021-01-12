@@ -158,9 +158,6 @@ public class GenerarFacturaControler implements Serializable {
 			return "generarf";
 		}
 		
-		
-		
-		
 	}
 	
 	

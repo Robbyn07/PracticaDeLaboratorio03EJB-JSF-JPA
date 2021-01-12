@@ -17,13 +17,13 @@ import ec.edu.ups.modelo.FacturaDetalle;
 @RequestScoped
 public class BuscarFacturaController implements Serializable {
 	
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	@EJB
 	private FacturaCabeceraFacade ejbFacturaCabeceraFacade;
 	
 	@EJB
-	private ProductoFacade ejbProductoFavade;
+	private ProductoFacade ejbProductoFacade;
 	
 	private String cedula;
 	private int id;

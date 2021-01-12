@@ -6,6 +6,32 @@
     version="2.3">
 	
 	<navigation-rule>
+		<from-view-id>/inicio.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>inicioPrincipal</from-outcome>
+			<to-view-id>/inicio.xhtml</to-view-id>
+		</navigation-case>	
+		
+		<navigation-case>
+			<from-outcome>inicioAdministrador</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>	
+		
+		<navigation-case>
+			<from-outcome>inicioEmpleado</from-outcome>
+			<to-view-id>/InicioEmpleado.xhtml</to-view-id>
+		</navigation-case>	
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/InicioEmpleado.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>editarc</from-outcome>
