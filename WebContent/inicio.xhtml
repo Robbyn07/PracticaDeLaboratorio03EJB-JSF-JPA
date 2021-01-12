@@ -105,12 +105,7 @@
 	      </div>
 	    </div>
 	  </nav>
-	  <!-- Header
-	  	<h:form>
-	   	  <h:commandButton value="Crear Tablas" action="#{crearTablas.agregarDatos()}" class="btn btn-sm btn-neutral"/>
-	   	  <h:commandButton action="#{inicioPrincipalControler.redirigir('login')}" value="Iniciar Sesion" class="btn btn-sm btn-neutral"/>
-      </h:form>
-       -->
+	  
       
       
 	  <div class="header bg-primary pb-6">
@@ -119,7 +114,6 @@
 	        <div class="row align-items-center py-4">
 	          <div class="col-lg-6 col-5 text-right">
 	            <h:form>
-				  	<h:commandButton value="Crear Tablas" action="#{crearTablas.agregarDatos}" class="btn btn-sm btn-neutral"/>
 				  	<h:commandButton action="#{inicioPrincipalControler.redirigir('login')}" value="Iniciar Sesion" class="btn btn-sm btn-neutral"/>
 				</h:form>
 	          </div>
@@ -238,24 +232,33 @@
 	              </div>
 	            </div>
 	          </div>
+	          <h:form>
+	          	<h:selectOneMenu value="#{inicioPrincipalControler.opcion}">
+		    		<f:selectItems value="#{inicioPrincipalControler.opciones}"/>
+		    	</h:selectOneMenu>
+	          	<h:commandButton value="General" action="#{inicioPrincipalControler.eleccion}"></h:commandButton>
+	          </h:form>
+	          
 	          <div class="table-responsive">
 	          
 	            <!-- Tabla General -->
-	            <h:dataTable class="table align-items-center table-flush" var="producto" value="#{}">
-	              
-	              <h:column>
-	              	<f:facet name="header"> Producto</f:facet>
-	              </h:column>
-	              
-	              <h:column>
-	              	<f:facet name="header">Cantidad</f:facet>
-	              </h:column>
-	              
-	              <h:column>
-	              	<f:facet name="header">Categoria</f:facet>
-	              </h:column>
-	              
-	            </h:dataTable>
+	        <h:dataTable value="#{inicioPrincipalControler.productos}" var="p" class="table align-items-center table-flush" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+    			<h:column>
+    				<f:facet name="header" id="proid">Bodega</f:facet>#{p.bodegas.get(0).nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Categoria</f:facet>#{p.categoria.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Nombre</f:facet>#{p.nombre}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Precio</f:facet>#{p.precio}
+    			</h:column>
+    			<h:column>
+    				<f:facet name="header" id="proid">Stock</f:facet>#{p.stock}
+    			</h:column>
+    		</h:dataTable>
 	            
 	          </div>
 	        </div>
