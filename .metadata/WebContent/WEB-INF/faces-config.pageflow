@@ -1,2 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16104070965561" configfile="/PracticaDeLaboratorio03EJB-JSF-JPA/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16104070965561" configfile="/PracticaDeLaboratorio03EJB-JSF-JPA/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="InicioEmpleado.xhtml" x="338" y="1330" id="pf16104076124852" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" outlinks="pf16104076124853 pf16104076124854 pf16104076124855 pf16104076124856 pf16104076124857 pf16104076124858 pf16104076124859" inlinks="pf161040761248510 pf161040761248511 pf161040761248512 pf161040761248513 pf161040761248514 pf161040761248515" path="/InicioEmpleado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EditarCliente.xhtml" x="122" y="178" id="pf161040761248616" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf161040761248617 pf161040761248511" inlinks="pf16104076124853 pf161040761248617" path="/EditarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AgregarCliente.xhtml" x="122" y="562" id="pf161040761248618" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf161040761248619 pf161040761248510" inlinks="pf16104076124854 pf161040761248619" path="/AgregarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EliminarCliente.xhtml" x="122" y="946" id="pf161040761248620" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf161040761248621 pf161040761248512" inlinks="pf16104076124855 pf161040761248621" path="/EliminarCliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="GenerarFactura.xhtml" x="122" y="1330" id="pf161040761248622" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf161040761248623 pf161040761248513" inlinks="pf16104076124856 pf161040761248623" path="/GenerarFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AnularFactura.xhtml" x="122" y="1714" id="pf161040761248624" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf161040761248625 pf161040761248514" inlinks="pf16104076124857 pf161040761248625" path="/AnularFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="BuscarFactura.xhtml" x="122" y="2098" id="pf161040761248626" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf161040761248515" inlinks="pf16104076124858" path="/BuscarFactura.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" x="554" y="1906" id="pf161040761248627" referenceLink="//@navigationRule.7/@navigationCase.6/@toViewId|" inlinks="pf16104076124859 pf161040761248628" path="/inicio.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="InicioAdministrador.xhtml" x="338" y="2482" id="pf161040761248629" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf161040761248630 pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634 pf161040761248628 pf161040761248635" inlinks="pf161040761248636" path="/InicioAdministrador.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="InventarioGeneral.xhtml" x="122" y="2482" id="pf161040761248637" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf161040761248636" inlinks="pf161040761248630" path="/InventarioGeneral.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="554" y="2482" id="pf161040761248638" referenceLink="//@navigationRule.7/@navigationCase.5/@toViewId|" inlinks="pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634" path="/ .xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AgregarBodega.xhtml" id="pf161040761248639" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" inlinks="pf161040761248635" path="/AgregarBodega.xhtml"/>
+  <links id="pf16104076124853" target="pf161040761248616" source="pf16104076124852" outcome="editarc"/>
+  <links id="pf16104076124854" target="pf161040761248618" source="pf16104076124852" outcome="agregarc"/>
+  <links id="pf16104076124855" target="pf161040761248620" source="pf16104076124852" outcome="eliminarc"/>
+  <links id="pf16104076124856" target="pf161040761248622" source="pf16104076124852" outcome="generarf"/>
+  <links id="pf16104076124857" target="pf161040761248624" source="pf16104076124852" outcome="anularf"/>
+  <links id="pf16104076124858" target="pf161040761248626" source="pf16104076124852" outcome="buscarf"/>
+  <links id="pf16104076124859" target="pf161040761248627" source="pf16104076124852" outcome="salir"/>
+  <links id="pf161040761248510" target="pf16104076124852" source="pf161040761248618" outcome="inicioe"/>
+  <links id="pf161040761248511" target="pf16104076124852" source="pf161040761248616" outcome="inicioe"/>
+  <links id="pf161040761248512" target="pf16104076124852" source="pf161040761248620" outcome="inicioe"/>
+  <links id="pf161040761248513" target="pf16104076124852" source="pf161040761248622" outcome="inicioe"/>
+  <links id="pf161040761248514" target="pf16104076124852" source="pf161040761248624" outcome="inicioe"/>
+  <links id="pf161040761248515" target="pf16104076124852" source="pf161040761248626" outcome="inicioe"/>
+  <links id="pf161040761248630" target="pf161040761248637" source="pf161040761248629" outcome="inventariog"/>
+  <links id="pf161040761248631" target="pf161040761248638" source="pf161040761248629" outcome="agregarp"/>
+  <links id="pf161040761248632" target="pf161040761248638" source="pf161040761248629" outcome="editarp"/>
+  <links id="pf161040761248633" target="pf161040761248638" source="pf161040761248629" outcome="buscarp"/>
+  <links id="pf161040761248634" target="pf161040761248638" source="pf161040761248629" outcome="eliminarp"/>
+  <links id="pf161040761248628" target="pf161040761248627" source="pf161040761248629" outcome="salir"/>
+  <links id="pf161040761248636" target="pf161040761248629" source="pf161040761248637" outcome="inicioa"/>
+  <links id="pf161040761248619" target="pf161040761248618" source="pf161040761248618" outcome="agregarc">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf161040761248617" target="pf161040761248616" source="pf161040761248616" outcome="editarc">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf161040761248621" target="pf161040761248620" source="pf161040761248620" outcome="eliminarc">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf161040761248623" target="pf161040761248622" source="pf161040761248622" outcome="generarf">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf161040761248625" target="pf161040761248624" source="pf161040761248624" outcome="anularf">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf161040761248635" target="pf161040761248639" source="pf161040761248629" outcome="agregarb"/>
+</pageflow:Pageflow>

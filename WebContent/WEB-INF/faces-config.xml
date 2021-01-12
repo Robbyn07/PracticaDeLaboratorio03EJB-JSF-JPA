@@ -124,6 +124,11 @@
 		</navigation-case>
 		
 		<navigation-case>
+			<from-outcome>agregarb</from-outcome>
+			<to-view-id>/AgregarBodega.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
 			<from-outcome>agregarp</from-outcome>
 			<to-view-id>/ .xhtml</to-view-id>
 		</navigation-case>
@@ -153,6 +158,19 @@
 	<navigation-rule>
 		<from-view-id>/InventarioGeneral.xhtml</from-view-id>
 		
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/AgregarBodega.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agregarb</from-outcome>
+			<to-view-id>/AgregarBodega.xhtml</to-view-id>
+		</navigation-case>
 		<navigation-case>
 			<from-outcome>inicioa</from-outcome>
 			<to-view-id>/InicioAdministrador.xhtml</to-view-id>

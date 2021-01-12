@@ -26,9 +26,13 @@ public class CiudadFacade extends AbstractFacade<Ciudad>{
 	}
 
 	public Ciudad buscarCiudad(String nombre) {
-		String jpql = "SELECT cd FROM Ciudad cd WHERE cd.nombre='" + nombre + "'";
-		Ciudad ciu = (Ciudad) em.createQuery(jpql).getSingleResult();
-		return ciu;
+		try {
+			String jpql = "SELECT cd FROM Ciudad cd WHERE cd.nombre='" + nombre + "'";
+			Ciudad ciu = (Ciudad) em.createQuery(jpql).getSingleResult();
+			return ciu;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public List<Ciudad> buscarCiudadesPorProvincia (Provincia provincia) {
@@ -38,9 +42,13 @@ public class CiudadFacade extends AbstractFacade<Ciudad>{
 	}
 	
 	public Ciudad buscarCiudadesPorBodega (String bodega) {
-		String jpql = "SELECT cd FROM Ciudad cd WHERE cd.bodega.nombre='" + bodega + "'";
-		Ciudad ciudad = (Ciudad) em.createQuery(jpql).getSingleResult();
-		return ciudad;
+		try {
+			String jpql = "SELECT cd FROM Ciudad cd WHERE cd.bodega.nombre='" + bodega + "'";
+			Ciudad ciudad = (Ciudad) em.createQuery(jpql).getSingleResult();
+			return ciudad;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 }
