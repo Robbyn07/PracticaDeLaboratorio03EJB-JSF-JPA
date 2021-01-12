@@ -10,7 +10,7 @@
   <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" x="554" y="1906" id="pf161040761248627" referenceLink="//@navigationRule.7/@navigationCase.6/@toViewId|" inlinks="pf16104076124859 pf161040761248628" path="/inicio.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="InicioAdministrador.xhtml" x="338" y="2482" id="pf161040761248629" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf161040761248630 pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634 pf161040761248628 pf161040761248635" inlinks="pf161040761248636" path="/InicioAdministrador.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="InventarioGeneral.xhtml" x="122" y="2482" id="pf161040761248637" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf161040761248636" inlinks="pf161040761248630" path="/InventarioGeneral.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="554" y="2482" id="pf161040761248638" referenceLink="//@navigationRule.7/@navigationCase.5/@toViewId|" inlinks="pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634" path="/ .xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="554" y="2482" id="pf161040761248638" referenceLink="//@navigationRule.7/@navigationCase.5/@toViewId|" inlinks="pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634" path="/EditarBodega.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="AgregarBodega.xhtml" id="pf161040761248639" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" inlinks="pf161040761248635" path="/AgregarBodega.xhtml"/>
   <links id="pf16104076124853" target="pf161040761248616" source="pf16104076124852" outcome="editarc"/>
   <links id="pf16104076124854" target="pf161040761248618" source="pf16104076124852" outcome="agregarc"/>
@@ -26,10 +26,10 @@
   <links id="pf161040761248514" target="pf16104076124852" source="pf161040761248624" outcome="inicioe"/>
   <links id="pf161040761248515" target="pf16104076124852" source="pf161040761248626" outcome="inicioe"/>
   <links id="pf161040761248630" target="pf161040761248637" source="pf161040761248629" outcome="inventariog"/>
-  <links id="pf161040761248631" target="pf161040761248638" source="pf161040761248629" outcome="agregarp"/>
-  <links id="pf161040761248632" target="pf161040761248638" source="pf161040761248629" outcome="editarp"/>
-  <links id="pf161040761248633" target="pf161040761248638" source="pf161040761248629" outcome="buscarp"/>
-  <links id="pf161040761248634" target="pf161040761248638" source="pf161040761248629" outcome="eliminarp"/>
+  <links id="pf161040761248631" target="pf161040761248638" source="pf161040761248629" outcome="editarb"/>
+  <links id="pf161040761248632" target="pf161040761248638" source="pf161040761248629" outcome="gestionp"/>
+  <links id="pf161040761248633" target="pf161040761248638" source="pf161040761248629" outcome="busc"/>
+  <links id="pf161040761248634" target="pf161040761248638" source="pf161040761248629" outcome="elim"/>
   <links id="pf161040761248628" target="pf161040761248627" source="pf161040761248629" outcome="salir"/>
   <links id="pf161040761248636" target="pf161040761248629" source="pf161040761248637" outcome="inicioa"/>
   <links id="pf161040761248619" target="pf161040761248618" source="pf161040761248618" outcome="agregarc">

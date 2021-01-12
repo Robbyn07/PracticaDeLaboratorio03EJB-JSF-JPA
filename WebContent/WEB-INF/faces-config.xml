@@ -129,22 +129,18 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>agregarp</from-outcome>
+			<from-outcome>editarb</from-outcome>
+			<to-view-id>/EditarBodega.xhtml</to-view-id>
+		</navigation-case>
+		
+		
+		<navigation-case>
+			<from-outcome>busc </from-outcome>
 			<to-view-id>/ .xhtml</to-view-id>
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>editarp</from-outcome>
-			<to-view-id>/ .xhtml</to-view-id>
-		</navigation-case>
-		
-		<navigation-case>
-			<from-outcome>buscarp</from-outcome>
-			<to-view-id>/ .xhtml</to-view-id>
-		</navigation-case>
-		
-		<navigation-case>
-			<from-outcome>eliminarp</from-outcome>
+			<from-outcome>elim </from-outcome>
 			<to-view-id>/ .xhtml</to-view-id>
 		</navigation-case>
 		
@@ -154,22 +150,31 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	
 	<navigation-rule>
 		<from-view-id>/InventarioGeneral.xhtml</from-view-id>
-		
 		<navigation-case>
 			<from-outcome>inicioa</from-outcome>
 			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
-	
 	<navigation-rule>
 		<from-view-id>/AgregarBodega.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>agregarb</from-outcome>
 			<to-view-id>/AgregarBodega.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+		<navigation-rule>
+		<from-view-id>/EditarBodega.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>editarb</from-outcome>
+			<to-view-id>/EditarBodega.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>inicioa</from-outcome>
