@@ -61,4 +61,15 @@ public class ProductoFacade extends AbstractFacade<Producto>{
 		List<Producto> productos = em.createQuery(jpql).getResultList();
 		return productos;
 	}
+	
+	
+	
+	
+	public List<Producto> buscarProductoPorNombre (String producto) {
+		String jpql = "SELECT pro FROM Producto pro WHERE pro.estado != 'E' AND pro.nombre LIKE '" + producto + "%'";
+		List<Producto> productos = em.createQuery(jpql).getResultList();
+		return productos;
+	}
+	
+	
 }

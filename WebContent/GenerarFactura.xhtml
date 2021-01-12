@@ -50,15 +50,14 @@
     	
 	    	
    		<div id="buscarProductos">
-   			<h:selectOneMenu value="#{generarFacturaControler.categoria}">
-	    		<f:selectItems value="#{generarFacturaControler.listCategoria}"/>
-	    		<f:ajax render="producto"/>
+   			<label>Categoria: </label>
+	    	<h:selectOneMenu value="#{generarFacturaControler.bodega}" id="producto">
+	    		<f:selectItems value="#{generarFacturaControler.listBodega}"/>
 	    	</h:selectOneMenu>
 	    	
-	    	<h:selectOneMenu value="#{generarFacturaControler.producto}" id="producto">
-	    		<f:selectItems value="#{generarFacturaControler.listProducto}"/>
-	    		<f:ajax render="bodega ciudad provincia"/>
-	    	</h:selectOneMenu>
+	    	<label>Producto: </label>
+	    	<h:inputText id="probu" value="#{generarFacturaControler.productoBuscar}" cols="2"/>
+	    	
 	    	
 	    	<h:commandButton value="Filtrar" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos">
 	    	</h:commandButton>

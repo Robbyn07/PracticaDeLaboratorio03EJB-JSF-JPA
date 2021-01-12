@@ -1,6 +1,8 @@
 package ec.edu.ups.controlador;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +19,7 @@ import ec.edu.ups.ejb.FacturaCabeceraFacade;
 import ec.edu.ups.ejb.PersonaFacade;
 import ec.edu.ups.ejb.ProductoFacade;
 import ec.edu.ups.ejb.ProvinciaFacade;
+import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Categoria;
 import ec.edu.ups.modelo.FacturaCabecera;
 import ec.edu.ups.modelo.FacturaDetalle;
@@ -29,9 +32,6 @@ public class GenerarFacturaControler implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
-	@EJB
-	private CategoriaFacade ejbCategoriaFacade;
 	
 	@EJB
 	private ProductoFacade ejbProductoFacade;
@@ -52,14 +52,11 @@ public class GenerarFacturaControler implements Serializable {
 	private FacturaCabeceraFacade ejbFacturaCabecera;
 	
 	
-	private List<Categoria> categorias = new ArrayList<Categoria>();
-	private List<Producto> productos = new ArrayList<Producto>();
+	private List<Bodega> bodegas = new ArrayList<Bodega>();
 	
 	
-	private List<String> listCategoria = new ArrayList<String>();
-	private List<String> listProducto = new ArrayList<String>();
-	private String categoria="";
-	private String producto="";
+	private List<String> listBodega = new ArrayList<String>();
+	private String bodega="";
 	
 	public static List<Producto> productosEscoger = new ArrayList<Producto>();
 	public static List<FacturaDetalle> detalle = new ArrayList<FacturaDetalle>();
@@ -71,25 +68,36 @@ public class GenerarFacturaControler implements Serializable {
     private String direccion="";
     private String telefono="";
     private String correo="";
+    private String productoBuscar="";
 	
 	@PostConstruct
 	public void datos() {
-		categorias = ejbCategoriaFacade.findAll();
+		bodegas = ejbBodegaFacade.findAll();
 		
-		productos = ejbProductoFacade.findAll();
 		
 		//productosEscoger = ejbProductoFacade.findAll();
 		
-		stringCategoria(categorias);
-		stringProducto(productos);
+		stringBodega(bodegas);
 		
-		categoria = listCategoria.get(0);
+		bodega = listBodega.get(0);
 			
 		
 	}
 	
 	public void filtrar() {
-		productosEscoger = ejbProductoFacade.buscarProductoPorCategoriaYNombre(categoria,producto);
+		if(productoBuscar.equals("")) {
+			productosEscoger = ejbBodegaFacade.buscarBodega(bodega).getProductos();
+		}else {
+			List<Producto> pr = ejbProductoFacade.buscarProductoPorNombre(productoBuscar);
+			productosEscoger = new ArrayList<Producto>();
+			for(int i=0; i<pr.size(); i++) {
+				if(pr.get(i).getBodegas().get(0).getNombre().equals(bodega)) {
+					productosEscoger.add(pr.get(i));
+				}
+			}
+			
+		}
+		
 	}
 	
 	public void buscarPersona() {
@@ -104,18 +112,30 @@ public class GenerarFacturaControler implements Serializable {
 	
 	
 	public void agregarDetalle(Producto productoDetalle) {
-		buscarPersona();
-		datos();
-		Producto producto = ejbProductoFacade.find(productoDetalle.getId());
-		if(producto.getStock()>=productoDetalle.getStock()) {
-			FacturaDetalle det = new FacturaDetalle(0, productoDetalle.getStock(), producto.getPrecio()*productoDetalle.getStock(), cabecera, producto);
-			cabecera.setSubtotal(cabecera.getSubtotal()+producto.getPrecio()*productoDetalle.getStock());
-			cabecera.setIva((float)0.12);
-			cabecera.setTotal(cabecera.getSubtotal()*cabecera.getIva()+cabecera.getSubtotal());
-			detalle.add(det);
-		}else {
-			System.out.println("no entra a la condicion");
+		try {
+			buscarPersona();
+			datos();
+			
+			
+			DecimalFormatSymbols separadoresPersonalizados = new DecimalFormatSymbols();
+			separadoresPersonalizados.setDecimalSeparator('.');
+			DecimalFormat formato1 = new DecimalFormat("#.00", separadoresPersonalizados);
+			
+			
+			Producto producto = ejbProductoFacade.find(productoDetalle.getId());
+			if(producto.getStock()>=productoDetalle.getStock()) {
+				FacturaDetalle det = new FacturaDetalle(0, productoDetalle.getStock(), producto.getPrecio()*productoDetalle.getStock(), cabecera, producto);
+				cabecera.setSubtotal(cabecera.getSubtotal()+producto.getPrecio()*productoDetalle.getStock());
+				cabecera.setIva(Float.parseFloat(formato1.format(cabecera.getSubtotal()*(float)0.12)));
+				cabecera.setTotal(cabecera.getIva()+cabecera.getSubtotal());
+				detalle.add(det);
+			}else {
+				System.out.println("no entra a la condicion");
+			}
+		} catch (Exception e) {
+			System.out.println("Falta introducir un cliente");
 		}
+			
 		
 	}
 	
@@ -161,71 +181,37 @@ public class GenerarFacturaControler implements Serializable {
 	}
 	
 	
-	private void stringCategoria(List<Categoria> cat) {
-		listCategoria = new ArrayList<String>();
-		for(int i=0; i<cat.size(); i++) {
-			listCategoria.add(cat.get(i).getNombre());
-		}
-	}
-	
-	private void stringProducto(List<Producto> pro) {
-		listProducto = new ArrayList<String>();
-		for(int i=0; i<pro.size(); i++) {
-			listProducto.add(pro.get(i).getNombre());
+	private void stringBodega(List<Bodega> bod) {
+		listBodega = new ArrayList<String>();
+		for(int i=0; i<bod.size(); i++) {
+			listBodega.add(bod.get(i).getNombre());
 		}
 	}
 	
 	
 
-	public List<Categoria> getCategorias() {
-		return categorias;
+	public List<Bodega> getBodegas() {
+		return bodegas;
 	}
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
+	public void setBodegas(List<Bodega> bodegas) {
+		this.bodegas = bodegas;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
+	public List<String> getListBodega() {
+		return listBodega;
 	}
 
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
+	public void setListBodega(List<String> listBodega) {
+		this.listBodega = listBodega;
 	}
 
-
-	public List<String> getListCategoria() {
-		return listCategoria;
+	public String getBodega() {
+		return bodega;
 	}
 
-	public void setListCategoria(List<String> listCategoria) {
-		this.listCategoria = listCategoria;
-	}
-
-	public List<String> getListProducto() {
-		return listProducto;
-	}
-
-	public void setListProducto(List<String> listProducto) {
-		this.listProducto = listProducto;
-	}
-
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		productos = ejbProductoFacade.buscarProductoPorCategoriaNombreUnico(categoria);
-		stringProducto(productos);
-		this.categoria = categoria;
-	}
-
-	public String getProducto() {
-		return producto;
-	}
-
-	public void setProducto(String producto) {
-		this.producto = producto;
+	public void setBodega(String bodega) {
+		this.bodega = bodega;
 	}
 
 	public static long getSerialversionuid() {
@@ -310,6 +296,14 @@ public class GenerarFacturaControler implements Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+
+	public String getProductoBuscar() {
+		return productoBuscar;
+	}
+
+	public void setProductoBuscar(String productoBuscar) {
+		this.productoBuscar = productoBuscar;
 	}
 	
 	
