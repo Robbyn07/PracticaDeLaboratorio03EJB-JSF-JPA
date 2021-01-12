@@ -45,21 +45,43 @@ public class IniciarSesionControler implements Serializable{
 		
 	}
 
+	
+
 	public String getCorreo() {
 		return correo;
 	}
+
+
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
 
+
+
 	public String getContrasena() {
 		return contrasena;
 	}
 
+
+
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
+
+
+
+	public String getPaginaRol() {
+		return paginaRol;
+	}
+
+
+
+	public void setPaginaRol(String paginaRol) {
+		this.paginaRol = paginaRol;
+	}
+
+
 
 	public Persona getPersona() {
 		return persona;
