@@ -44,7 +44,7 @@ public class BuscarFacturaController implements Serializable {
 	public void buscarPorId() {
 		cabecerass = new ArrayList<FacturaCabecera>();
 		try {
-			cabecerass.add(ejbFacturaCabeceraFacade.find(id));
+			cabecerass.add(ejbFacturaCabeceraFacade.buscarPorCodigo(id));
 			detalless = new ArrayList<FacturaDetalle>();
 			this.setDetalless(cabecerass.get(0).getFacturasDetalle());
 		} catch (Exception e) {

@@ -37,7 +37,7 @@ public class PersonaFacade extends AbstractFacade<Persona>{
 	
 	public Persona buscarCliente(String cedula) {
 		try {
-			String jpql = "SELECT per FROM Persona per WHERE per.cedula='" + cedula + "'";
+			String jpql = "SELECT per FROM Persona per WHERE per.cedula='" + cedula + "' AND per.estado != 'D' AND per.rol='C'";
 			Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 			return per;
 		} catch (Exception e) {

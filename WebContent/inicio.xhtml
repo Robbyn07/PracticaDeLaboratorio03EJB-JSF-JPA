@@ -105,8 +105,6 @@
 	      </div>
 	    </div>
 	  </nav>
-	  
-      
       
 	  <div class="header bg-primary pb-6">
 	    <div class="container-fluid">
@@ -242,23 +240,23 @@
 	          <div class="table-responsive">
 	          
 	            <!-- Tabla General -->
-	        <h:dataTable value="#{inicioPrincipalControler.productos}" var="p" class="table align-items-center table-flush" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-    			<h:column>
-    				<f:facet name="header" id="proid">Bodega</f:facet>#{p.bodegas.get(0).nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Categoria</f:facet>#{p.categoria.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Nombre</f:facet>#{p.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Precio</f:facet>#{p.precio}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Stock</f:facet>#{p.stock}
-    			</h:column>
-    		</h:dataTable>
+		        <h:dataTable value="#{inicioPrincipalControler.productos}" var="p" class="table align-items-center table-flush" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+	    			<h:column>
+	    				<f:facet name="header" id="proid">Bodega</f:facet>#{p.bodegas.get(0).nombre}
+	    			</h:column>
+	    			<h:column>
+	    				<f:facet name="header" id="proid">Categoria</f:facet>#{p.categoria.nombre}
+	    			</h:column>
+	    			<h:column>
+	    				<f:facet name="header" id="proid">Nombre</f:facet>#{p.nombre}
+	    			</h:column>
+	    			<h:column>
+	    				<f:facet name="header" id="proid">Precio</f:facet>#{p.precio}
+	    			</h:column>
+	    			<h:column>
+	    				<f:facet name="header" id="proid">Stock</f:facet>#{p.stock}
+	    			</h:column>
+	    		</h:dataTable>
 	            
 	          </div>
 	        </div>

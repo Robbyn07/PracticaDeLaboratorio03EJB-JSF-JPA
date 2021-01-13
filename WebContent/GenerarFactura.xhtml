@@ -4,13 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
     xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough" >
 <h:head>
-    <title>Inicio Administrador</title>
-</h:head>
-<h:body>
+    <title>Generar Factura</title>
     
-    <script type="text/javascript">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+	<meta name="description" content="Start your development with a Dashboard for Bootstrap 4."/>
+	<meta name="author" content="Creative Tim"/>
+	<!-- Favicon -->
+	<link rel="icon" href="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/img/brand/favicon.png" type="image/png"/>
+	<!-- Fonts -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"/>
+	<!-- Icons -->
+	<link rel="stylesheet" href="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/nucleo/css/nucleo.css" type="text/css"/>
+	<link rel="stylesheet" href="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css"/>
+	<!-- Argon CSS -->
+	<link rel="stylesheet" href="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/css/argon.css?v=1.2.0" type="text/css"/>
+</h:head>
+
+<h:body class="bg-default">
+
+	<script type="text/javascript">
     	function indicador(data){
     		if(data.status =="begin")
     			document.getElementById("id5").style.display = "inline";
@@ -19,135 +34,266 @@
     	}
     </script>
     
-    
-    
-    <h:form>
-    	
-    	<h:commandButton value="Salir" action="#{generarFacturaControler.salir}">
-			</h:commandButton>
-    	
-    	<div id="datosCliente">
-    		<h:inputText id="ced" value="#{generarFacturaControler.cedula}" type="text"/>
-	    	<h:commandButton value="Buscar Cliente" action="#{generarFacturaControler.buscarPersona}" update="list:infoPersona" cols="2">
-	    		<f:ajax render="cedulah nombrecli apellidocli direccioncli telefonocli correocli" execute="ced" />
-	    	</h:commandButton>
-	    	<br></br>
-	    	<label>Cedula: </label>
-	    	<h:inputText id="cedulah" value="#{generarFacturaControler.cedula}" cols="2"/>
-	    	<label>Nombre: </label>
-	   		<h:inputText id="nombrecli" value="#{generarFacturaControler.nombre}" cols="2"/>
-	   		<label>Apellido: </label>
-	   		<h:inputText id="apellidocli" value="#{generarFacturaControler.apellido}" cols="2"/>
-	   		<br></br>
-	    	<label>Direccion: </label>
-	   		<h:inputText id="direccioncli" value="#{generarFacturaControler.direccion}" cols="2"/>
-	   		<label>Telefono: </label>
-	   		<h:inputText id="telefonocli" value="#{generarFacturaControler.telefono}" cols="2"/>
-	   		<label>Correo: </label>
-	   		<h:inputText id="correocli" value="#{generarFacturaControler.correo}" cols="2"/>
-	   		<br></br>
-    	</div>
-    	
-	    	
-   		<div id="buscarProductos">
-   			<label>Categoria: </label>
-	    	<h:selectOneMenu value="#{generarFacturaControler.bodega}" id="producto">
-	    		<f:selectItems value="#{generarFacturaControler.listBodega}"/>
-	    	</h:selectOneMenu>
-	    	
-	    	<label>Producto: </label>
-	    	<h:inputText id="probu" value="#{generarFacturaControler.productoBuscar}" cols="2"/>
-	    	
-	    	
-	    	<h:commandButton value="Filtrar" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos">
-	    	</h:commandButton>
-   		</div>
-    	
-    	
-    	
-    	<div >
-    		<h:dataTable id="listaProductos" value="#{generarFacturaControler.productosEscoger}" var="p" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-    			<h:column>
-    				<f:facet name="header" id="proid">Codigo</f:facet>#{p.id}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="pronombre">Categoria</f:facet>#{p.categoria.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="pronombre">Nombre</f:facet>#{p.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="propu">Precio unitario</f:facet>#{p.precio}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="prostock">Stock</f:facet>#{p.stock}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="procant">Cantidad</f:facet>
-    				<h:inputText id="procantidad" value="#{p.stock}"></h:inputText>
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="prosbodega">Bodega</f:facet>#{p.bodegas.get(0).nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proprovincia">Provincia</f:facet>#{p.bodegas.get(0).ciudad.provincia.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="prociudad">Ciudad</f:facet>#{p.bodegas.get(0).ciudad.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proagregar">Agregar</f:facet>
-					<h:commandButton value="Agregar" action="#{generarFacturaControler.agregarDetalle(p)}" update="list:listaProductos buscarProductos">
-					</h:commandButton>
-    			</h:column>
-    		</h:dataTable>
-    	</div>
-	    	
-    	
-    			
-   		<div id="listaDetalles">
-    		<h:dataTable value="#{generarFacturaControler.detalle}" var="d" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-    			<h:column>
-    				<f:facet name="header" id="proid">Bodega</f:facet>#{d.producto.bodegas.get(0).nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Producto</f:facet>#{d.producto.nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Cantidad</f:facet>#{d.cantidad}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proid">Total</f:facet>#{d.total}
-    			</h:column>
-    		</h:dataTable>
-    		
+    <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
+	    <div class="container">
+	      <a class="navbar-brand" href="InicioEmpleado.jsf">
+	        <img src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/img/brand/logo_ups.png"/>
+	      </a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+	      <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+	        <hr class="d-lg-none" />
+	        <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+	          <li class="nav-item">
+	            <a class="nav-link nav-link-icon" href="https://www.facebook.com/UPSalesianaEc" target="_blank">
+	              <i class="fab fa-facebook-square"></i>
+	              <span class="nav-link-inner--text d-lg-none">Facebook</span>
+	            </a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link nav-link-icon" href="https://github.com/Robbyn07/PracticaDeLaboratorio03EJB-JSF-JPA" target="_blank">
+	              <i class="fab fa-github"></i>
+	              <span class="nav-link-inner--text d-lg-none">Github</span>
+	            </a>
+	          </li>
+	        </ul>
+	      </div>
+	    </div>
+	</nav>
+	
+	<!-- Tabla -->
+	<div class="main-content" id="panel">
+	
+		<div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+	      <div class="container">
+	        <div class="header-body text-center mb-7">
+	          <div class="row justify-content-center">
+	            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+	              <h1 class="text-white">Generar Factura</h1>   
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+		
+		<h:form role="form">
+		
+			<!-- Card stats  "container-fluid mt-'-'6"  -->
+			<div class="container mt--8 pb-5">
+		        <div class="row" id="datosCliente">
+		        	<div class="col">
+		            	<div class="card card-stats">
+			              <!-- Card body -->
+		              		<div class="card-body">
+	               	 			<div class="row">
+		                			<div class="col">
+               					
+			                   			<div class="form-group mb-3">
+					                		<div class="input-group-prepend">
+					              				<h:inputText pt:placeholder="Cedula" class="form-control" id="ced" type="text" value="#{generarFacturaControler.cedula}"/>
+				             				
+					             				<div class="col">
+					             					<h:commandButton value="Buscar Cliente" action="#{generarFacturaControler.buscarPersona}" update="list:infoPersona" class="btn btn-primary">
+									    				<f:ajax render="cedulah nombrecli apellidocli direccioncli telefonocli correocli" execute="ced" />
+									    			</h:commandButton>
+					             				</div>
+				             					
+			             					</div>	
+					   					</div>
+		                 			</div>
+		                 		</div>
+	              			</div>
+	            		</div>
+         			</div>
+          		
+	          		<div class="col">
+						<div class="card card-stats">
+		               <!-- Card body -->
+	           				<div class="card-body">
+	               				<div class="row">
+	                  				<div class="col">
+			           					<div class="form-group mb-3">
+						   					<div class="input-group-prepend">
+										   		<h:inputText pt:placeholder="Cedula" class="form-control" id="cedulah" value="#{generarFacturaControler.cedula}"/>
+									   		</div>
+						   				</div>	
+				   			
+						               	<div class="form-group mb-3">
+							                <div class="input-group-prepend">
+										   		<h:inputText pt:placeholder="Nombre" class="form-control" id="nombrecli" value="#{generarFacturaControler.nombre}"/>
+								   			</div>	
+							   			</div>
+							   		
+							   			<div class="form-group mb-3">
+							                <div class="input-group-prepend">
+										   		<h:inputText pt:placeholder="Apellido" class="form-control" id="apellidocli" value="#{generarFacturaControler.apellido}"/>
+								   			</div>	
+							   			</div>
+								   		
+								   		<div class="form-group mb-3">
+							                <div class="input-group-prepend">
+										   		<h:inputText pt:placeholder="Direccion" class="form-control" id="direccioncli" value="#{generarFacturaControler.direccion}"/>
+										   		
+								   			</div>	
+							   			</div>
+							   			
+								   		<div class="form-group mb-3">
+							                <div class="input-group-prepend">
+										   		<h:inputText pt:placeholder="Telefono" class="form-control" id="telefonocli" value="#{generarFacturaControler.telefono}"/>
+								   			</div>	
+							   			</div>
+							   			
+							   			<div class="form-group mb-3">
+							               	<div class="input-group-prepend">
+									   			<h:inputText pt:placeholder="Correo" class="form-control" id="correocli" value="#{generarFacturaControler.correo}"/>
+							   				</div>	
+							   		  	</div>
+		                  			</div>
+		               			</div>
+		           			</div>
+		           		</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="w-100"></div>
 			
-			<label>SUBTOTAL: </label>
-	    	<h:inputText id="subtotal" value="#{generarFacturaControler.cabecera.subtotal}" disabled="true" cols="2"/>
-	    	<br></br>
-			<label>IVA: </label>
-	    	<h:inputText id="iva" value="#{generarFacturaControler.cabecera.iva}" disabled="true" cols="2"/>
-	    	<br></br>
-	    	<label>TOTAL: </label>
-	    	<h:inputText id="total" value="#{generarFacturaControler.cabecera.total}" disabled="true" cols="2"/>
-			<br></br>
-			<h:commandButton value="Enviar" action="#{generarFacturaControler.enviarFactura}" update="list:listaProductos buscarProductos">
-			</h:commandButton>
-			
-    	</div>
-    			
-    	
-	    	
-    	
-    	<span id="id5" style="display: none;"></span>
-    	
-    </h:form>
-    
-    
-    
-    
-    
-    
+			<div class="col" id="buscarProductos">
+				<div class="card card-stats">
+		               <!-- Card body -->
+	   				<div class="card-body">
+	           			<div class="row">
+	               			<div class="col">
+		                    	<div class="form-group mb-3">
+						   			<label class="form-control-label">Categoria: </label>
+							    	<h:selectOneMenu class="form-control" value="#{generarFacturaControler.bodega}" id="producto">
+							    		<f:selectItems value="#{generarFacturaControler.listBodega}"/>
+							    	</h:selectOneMenu>
+						    	</div>  
+								    	
+						    	<div class="form-group mb-3">
+							    	<label class="form-control-label">Producto: </label>
+							    	<h:inputText class="form-control" id="probu" value="#{generarFacturaControler.productoBuscar}"/>
+						    	</div>
+						    	
+						    	<div class="text-center">
+				    				<h:commandButton value="Filtrar" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos" class="btn btn-primary btn-lg btn-block"/>
+				    			</div>
+	                  		</div>
+	               		</div>
+	           		</div>
+				</div>
+			</div>
+					
+			<div class="w-100"></div>
+				
+			<div class="row">
+				<div class="col">
+					<div class="card">		
+			            <div class="table-responsive">
+			    
+					    	<h:dataTable id="listaProductos" value="#{generarFacturaControler.productosEscoger}" var="p" 
+                   			styleClass="table align-items-center table-dark table-flush" headerClass="thead-light" rowClasses="filaPar, filaImpar">
+				    			<h:column>
+				    				<f:facet name="header" id="proid">Codigo</f:facet>#{p.id}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="pronombre">Categoria</f:facet>#{p.categoria.nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="pronombre">Nombre</f:facet>#{p.nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="propu">Precio unitario</f:facet>#{p.precio}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="prostock">Stock</f:facet>#{p.stock}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="procant">Cantidad</f:facet>
+				    				<h:inputText  class="form-control form-control-sm" id="procantidad" value="#{p.stock}"></h:inputText>
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="prosbodega">Bodega</f:facet>#{p.bodegas.get(0).nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="proprovincia">Provincia</f:facet>#{p.bodegas.get(0).ciudad.provincia.nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="prociudad">Ciudad</f:facet>#{p.bodegas.get(0).ciudad.nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="proagregar">Agregar</f:facet>
+									<h:commandButton value="Agregar" action="#{generarFacturaControler.agregarDetalle(p)}" update="list:listaProductos buscarProductos" class="btn btn-primary"/>
+				    			</h:column>
+				    		</h:dataTable>
+	         			</div>
+			    	</div>
+				</div>
+			</div>
+				
+			<div class="row" id="listaDetalles" >
+				<div class="col">
+					<div class="card">	
+			            <div class="table-responsive">
+				    
+					    	<h:dataTable value="#{generarFacturaControler.detalle}" var="d" 
+					    	styleClass="table align-items-center table-dark table-flush" headerClass="thead-light" rowClasses="filaPar, filaImpar">
+				    			<h:column>
+				    				<f:facet name="header" id="proid">Bodega</f:facet>#{d.producto.bodegas.get(0).nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="proid">Producto</f:facet>#{d.producto.nombre}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="proid">Cantidad</f:facet>#{d.cantidad}
+				    			</h:column>
+				    			<h:column>
+				    				<f:facet name="header" id="proid">Total</f:facet>#{d.total}
+				    			</h:column>
+				    		</h:dataTable>
+		         		</div>
+			    	</div>
+				</div>
+				
+				<div class="col">
+					 
+				 	<div class="form-group mb-3">
+				 		<label class="form-control-label">SUBTOTAL: </label>
+			    		<h:inputText class="form-control" id="subtotal" value="#{generarFacturaControler.cabecera.subtotal}" disabled="true"/>
+			    	</div>  
+					    	
+			    	<div class="form-group mb-3">
+				    	<label class="form-control-label">IVA: </label>
+			    		<h:inputText class="form-control" id="iva" value="#{generarFacturaControler.cabecera.iva}" disabled="true"/>
+			    	</div>
+			    	
+			    	<div class="form-group mb-3">
+				    	<label class="form-control-label">TOTAL: </label>
+			    		<h:inputText class="form-control"  id="total" value="#{generarFacturaControler.cabecera.total}" disabled="true"/>
+			    	</div>
+			    	
+					<div class="text-center">
+						<h:commandButton value="Salir" action="#{generarFacturaControler.salir}" class="btn btn-primary"/>
+						<h:commandButton value="Enviar" action="#{generarFacturaControler.enviarFactura}" update="list:listaProductos buscarProductos" class="btn btn-primary"/>
+					</div>
+			    	<span id="id5" style="display: none;"></span>
+				</div>
+			</div>
+		
+		</h:form>
+	</div> 
+	
+	<!-- Argon Scripts -->
+	<!-- Core -->
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/jquery/dist/jquery.min.js"></script>
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/js-cookie/js.cookie.js"></script>
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+	<!-- Argon JS -->
+	<script src="/PracticaDeLaboratorio03EJB-JSF-JPA/assets/js/argon.js?v=1.2.0"></script>
   	
 </h:body>
 </html>
