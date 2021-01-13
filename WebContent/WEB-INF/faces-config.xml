@@ -161,8 +161,8 @@
 		
 		
 		<navigation-case>
-			<from-outcome>busc </from-outcome>
-			<to-view-id>/ .xhtml</to-view-id>
+			<from-outcome>gestionp</from-outcome>
+			<to-view-id>/GestionProductoPorBodega.xhtml</to-view-id>
 		</navigation-case>
 		
 		<navigation-case>
@@ -201,6 +201,18 @@
 		<navigation-case>
 			<from-outcome>editarb</from-outcome>
 			<to-view-id>/EditarBodega.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/GestionProductoPorBodega.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>gestionp</from-outcome>
+			<to-view-id>/GestionProductoPorBodega.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>inicioa</from-outcome>

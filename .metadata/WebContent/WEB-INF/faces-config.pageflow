@@ -7,11 +7,13 @@
   <nodes xsi:type="pageflow:PFPage" name="GenerarFactura.xhtml" x="122" y="1330" id="pf161040761248622" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf161040761248623 pf161040761248513" inlinks="pf16104076124856 pf161040761248623" path="/GenerarFactura.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="AnularFactura.xhtml" x="122" y="1714" id="pf161040761248624" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf161040761248625 pf161040761248514" inlinks="pf16104076124857 pf161040761248625" path="/AnularFactura.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="BuscarFactura.xhtml" x="122" y="2098" id="pf161040761248626" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf161040761248515" inlinks="pf16104076124858" path="/BuscarFactura.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" x="554" y="1906" id="pf161040761248627" referenceLink="//@navigationRule.7/@navigationCase.6/@toViewId|" inlinks="pf16104076124859 pf161040761248628" path="/inicio.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="InicioAdministrador.xhtml" x="338" y="2482" id="pf161040761248629" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf161040761248630 pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634 pf161040761248628 pf161040761248635" inlinks="pf161040761248636" path="/InicioAdministrador.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="inicio.xhtml" x="554" y="2098" id="pf161040761248627" referenceLink="//@navigationRule.7/@navigationCase.5/@toViewId|" inlinks="pf16104076124859 pf161040761248628" path="/inicio.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="InicioAdministrador.xhtml" x="338" y="2866" id="pf161040761248629" referenceLink="//@navigationRule.11/@navigationCase.1/@toViewId|" outlinks="pf161040761248630 pf161040761248631 pf161040761248628 pf161040761248635 pf16104634520330 pf16104634520331" inlinks="pf161040761248636 pf16104634520332 pf16104634520333 pf16104634520334" path="/InicioAdministrador.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="InventarioGeneral.xhtml" x="122" y="2482" id="pf161040761248637" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf161040761248636" inlinks="pf161040761248630" path="/InventarioGeneral.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="554" y="2482" id="pf161040761248638" referenceLink="//@navigationRule.7/@navigationCase.5/@toViewId|" inlinks="pf161040761248631 pf161040761248632 pf161040761248633 pf161040761248634" path="/EditarBodega.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="AgregarBodega.xhtml" id="pf161040761248639" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" inlinks="pf161040761248635" path="/AgregarBodega.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="122" y="2866" id="pf161040761248638" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf16104634520335 pf16104634520333" inlinks="pf161040761248631 pf16104634520335" path="/EditarBodega.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="AgregarBodega.xhtml" x="122" y="3250" id="pf161040761248639" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf16104634520336 pf16104634520332" inlinks="pf161040761248635 pf16104634520336" path="/AgregarBodega.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name=" .xhtml" x="554" y="2866" id="pf16104634520337" referenceLink="//@navigationRule.7/@navigationCase.4/@toViewId|" inlinks="pf16104634520330" path="/ .xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="GestionProductoPorBodega.xhtml" id="pf16104634520338" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf16104634520334 pf16104634520339" inlinks="pf16104634520331 pf16104634520339" path="/GestionProductoPorBodega.xhtml"/>
   <links id="pf16104076124853" target="pf161040761248616" source="pf16104076124852" outcome="editarc"/>
   <links id="pf16104076124854" target="pf161040761248618" source="pf16104076124852" outcome="agregarc"/>
   <links id="pf16104076124855" target="pf161040761248620" source="pf16104076124852" outcome="eliminarc"/>
@@ -27,11 +29,12 @@
   <links id="pf161040761248515" target="pf16104076124852" source="pf161040761248626" outcome="inicioe"/>
   <links id="pf161040761248630" target="pf161040761248637" source="pf161040761248629" outcome="inventariog"/>
   <links id="pf161040761248631" target="pf161040761248638" source="pf161040761248629" outcome="editarb"/>
-  <links id="pf161040761248632" target="pf161040761248638" source="pf161040761248629" outcome="gestionp"/>
-  <links id="pf161040761248633" target="pf161040761248638" source="pf161040761248629" outcome="busc"/>
-  <links id="pf161040761248634" target="pf161040761248638" source="pf161040761248629" outcome="elim"/>
   <links id="pf161040761248628" target="pf161040761248627" source="pf161040761248629" outcome="salir"/>
   <links id="pf161040761248636" target="pf161040761248629" source="pf161040761248637" outcome="inicioa"/>
+  <links id="pf161040761248635" target="pf161040761248639" source="pf161040761248629" outcome="agregarb"/>
+  <links id="pf16104634520330" target="pf16104634520337" source="pf161040761248629" outcome="elim"/>
+  <links id="pf16104634520332" target="pf161040761248629" source="pf161040761248639" outcome="inicioa"/>
+  <links id="pf16104634520333" target="pf161040761248629" source="pf161040761248638" outcome="inicioa"/>
   <links id="pf161040761248619" target="pf161040761248618" source="pf161040761248618" outcome="agregarc">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
@@ -57,5 +60,17 @@
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
     <bendPoints d1Width="-64" d2Width="-64"/>
   </links>
-  <links id="pf161040761248635" target="pf161040761248639" source="pf161040761248629" outcome="agregarb"/>
+  <links id="pf16104634520336" target="pf161040761248639" source="pf161040761248639" outcome="agregarb">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf16104634520335" target="pf161040761248638" source="pf161040761248638" outcome="editarb">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+  <links id="pf16104634520331" target="pf16104634520338" source="pf161040761248629" outcome="gestionp"/>
+  <links id="pf16104634520334" target="pf161040761248629" source="pf16104634520338" outcome="inicioa"/>
+  <links id="pf16104634520339" target="pf16104634520338" source="pf16104634520338" outcome="gestionp"/>
 </pageflow:Pageflow>

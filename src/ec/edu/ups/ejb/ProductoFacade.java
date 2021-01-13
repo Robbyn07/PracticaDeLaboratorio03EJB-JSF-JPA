@@ -44,14 +44,12 @@ public class ProductoFacade extends AbstractFacade<Producto>{
 		return productos;
 	}
 	
-	
 	public List<Producto> productosOrdenadosAlfabeticamente(){
 		String jpql = "SELECT pro FROM Producto pro ORDER BY pro.nombre ASC";
+
 		List<Producto> productos = em.createQuery(jpql).getResultList();
 		return productos;
 	}
-	
-	
 	
 	
 	public List<Producto> buscarProductoPorNombre (String producto) {
