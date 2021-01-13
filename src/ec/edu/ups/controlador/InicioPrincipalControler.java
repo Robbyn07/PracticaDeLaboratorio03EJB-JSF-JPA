@@ -41,9 +41,10 @@ public class InicioPrincipalControler implements Serializable{
 	
 	@PostConstruct
 	public void constructor() {
+		productosGeneral();
 		opciones = new ArrayList<String>();
-		productos = new ArrayList<Producto>();
-		productos = ejbProductoFacade.findAll();
+		//productos = new ArrayList<Producto>();
+		//productos = ejbProductoFacade.findAll();
 		List<Bodega> bodegas = ejbBodegaFacade.findAll();
 		b1 = bodegas.get(0).getNombre();
 		b2 = bodegas.get(1).getNombre();
