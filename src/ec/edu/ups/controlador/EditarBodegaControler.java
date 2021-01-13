@@ -19,7 +19,7 @@ public class EditarBodegaControler implements Serializable {
 	private BodegaFacade ejbBodegaFacade;
 	
 	private String nombre="";
-	private String nombreBuscar="";
+	public static  String nombreBuscar="";
 	private String direccion="";
     private String visibilidad="display: none";
     private String nombreCiudad="";
@@ -28,7 +28,7 @@ public class EditarBodegaControler implements Serializable {
 
     public void buscarBodega() {
     	try {
-			
+    		
     		Bodega bodega = ejbBodegaFacade.buscarBodega(nombreBuscar);
     		
     		this.setNombre(bodega.getNombre());
@@ -44,13 +44,17 @@ public class EditarBodegaControler implements Serializable {
 
    
     public String editarBodega() {
-    	try {
-    		Bodega bodega = ejbBodegaFacade.buscarBodega(nombre);
+    	try { 
+    		System.out.println("nombre BODEGA B : "+ nombreBuscar);
+    		System.out.println("nombre BODEGA : "+ nombre);
+    		
+    		Bodega bodega = ejbBodegaFacade.buscarBodega(nombreBuscar);
     		bodega.setNombre(nombre);
     		bodega.setDireccion(direccion);
 			ejbBodegaFacade.edit(bodega);
 			visibilidad="display: none";
 			System.out.println("exito edita");
+			nombreBuscar="";
 			return "inicioa";
 			
 		} catch (Exception e) {

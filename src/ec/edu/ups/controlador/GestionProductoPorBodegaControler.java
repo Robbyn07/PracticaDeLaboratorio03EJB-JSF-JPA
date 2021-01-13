@@ -41,6 +41,8 @@ public class GestionProductoPorBodegaControler implements Serializable{
 //	private List<Categoria> Categorias = new ArrayList<Categoria>();
 	private List<String> opcionesCategorias = new ArrayList<String>();
 	
+	private List<String> opcionesBodegas = new ArrayList<String>();
+	
 //	private List<String> test = new ArrayList<String>();
 	
 	private String opcion = "";
@@ -63,10 +65,11 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		stockA="";
 		
 		char estado = 72;
-		opciones = new ArrayList<String>();
+		//opciones = new ArrayList<String>();
 		
-		System.out.println("count de list categoria : " + opcionesCategorias.size());
+		//System.out.println("count de list categoria : " + opcionesCategorias.size());
 		
+		/*
 		if(opcionesCategorias.size() == 0 ) {
 			for(int i=0; i<ejbCategoriaFacade.findAll().size(); i++) {
 				opcionesCategorias.add(ejbCategoriaFacade.findAll().get(i).getNombre());
@@ -74,6 +77,7 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		}else {
 			System.out.println("count de list categoria : " + opcionesCategorias.size());
 		}
+		*/
 		
 		
 		
@@ -82,15 +86,21 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		
 		System.out.println("verrr : " + opcion);
 		
+		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
+			opcionesBodegas.add(ejbBodegaFacade.findAll().get(i).getNombre());
+		}
+		
+		
 		if(opcion == "") {
+			
 			productos = new ArrayList<Producto>();
-			Bodega bodegas = ejbBodegaFacade.buscarBodega("Bodega Cuencanito");
-			for(int i=1; i<bodegas.getProductos().size(); i++) {
+			Bodega bodegas = ejbBodegaFacade.buscarBodega(opcionesBodegas.get(0));
+			for(int i=0; i<bodegas.getProductos().size(); i++) {
 				if (bodegas.getProductos().get(i).getEstado() == estado) {
 					productos.add(bodegas.getProductos().get(i));
 				}
-				
 			}
+			
 		}else {
 			
 			productos = new ArrayList<Producto>();
@@ -110,8 +120,8 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		//productos = productosBodega("Bodega ");
 		
 		//opciones.add("General");
-		opciones.add("Bodega Cuencanito");
-		opciones.add("Bodega Zamborondeno");
+		//opciones.add("Bodega Cuencanito");
+		//opciones.add("Bodega Zamborondeno");
 		//opciones.add("Categoria");
 	}
 	
@@ -162,17 +172,23 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	}
 	*/
 	
+	
+	/*
 	public void productosBodega() {
-		/*
+		
+		
+		
 		System.out.println("ver opcion elejida  : " + opcion);
 		productos = new ArrayList<Producto>();
 		Bodega bodegas = ejbBodegaFacade.buscarBodega(opcion);
 		for(int i=0; i<bodegas.getProductos().size(); i++) {
 			productos.add(bodegas.getProductos().get(i));
 		}
-		*/
+		
+		
 		constructor();
 	}
+*/
 	
 	
 	public void Eliminar(Producto pro) {
@@ -374,6 +390,16 @@ public class GestionProductoPorBodegaControler implements Serializable{
 
 	public void setBode(Bodega bode) {
 		this.bode = bode;
+	}
+
+
+	public List<String> getOpcionesBodegas() {
+		return opcionesBodegas;
+	}
+
+
+	public void setOpcionesBodegas(List<String> opcionesBodegas) {
+		this.opcionesBodegas = opcionesBodegas;
 	}
 
 	

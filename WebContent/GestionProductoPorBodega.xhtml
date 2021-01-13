@@ -15,9 +15,9 @@
     	<h:commandButton value="Salir" action="#{gestionProductoPorBodegaControler.salir}"/>
     	
     	<h:selectOneMenu value="#{gestionProductoPorBodegaControler.opcion}">
-		<f:selectItems value="#{gestionProductoPorBodegaControler.opciones}"/>
+		<f:selectItems value="#{gestionProductoPorBodegaControler.opcionesBodegas}"/>
 		</h:selectOneMenu>
-		<h:commandButton value="Consultar" action="#{gestionProductoPorBodegaControler.productosBodega}"></h:commandButton>
+		<h:commandButton value="Consultar" action="#{gestionProductoPorBodegaControler.constructor()}"></h:commandButton>
 	
 	
 	
