@@ -35,7 +35,7 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	@EJB
 	private BodegaFacade ejbBodegaFacade;
 	
-	public static List<Producto> productos = new ArrayList<Producto>();
+	private List<Producto> productos = new ArrayList<Producto>();
 	private List<String> opciones = new ArrayList<String>();
 	
 //	private List<Categoria> Categorias = new ArrayList<Categoria>();
@@ -45,7 +45,7 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	
 //	private List<String> test = new ArrayList<String>();
 	
-	private String opcion = "";
+	public static String opcion = "";
 	private String opcionCategoria = "";
 	
 	private Producto producto = null;
@@ -60,12 +60,34 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	
 	@PostConstruct
 	public void constructor() {
+		
+		//productos = new ArrayList<Producto>();
+		
 		nombreA="";
 		precioA="";
 		stockA="";
 		
 		char estado = 72;
-		//opciones = new ArrayList<String>();
+		
+		opciones = new ArrayList<String>();
+		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
+			opciones.add(ejbBodegaFacade.findAll().get(i).getNombre());
+		
+		}
+		
+		
+		
+		
+		//productos = productosBodega("Bodega ");
+		
+		//opciones.add("General");
+		
+		//opciones.add("Bodega Cuencanito");
+		//opciones.add("Bodega Zamborondeno");
+		
+		//opciones.add("Categoria");
+		
+		
 		
 		//System.out.println("count de list categoria : " + opcionesCategorias.size());
 		
@@ -85,44 +107,42 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		//productos = ejbProductoFacade.findAll();
 		
 		System.out.println("verrr : " + opcion);
-		
+		System.out.println("TAMAÑO LISTA PRODUCTOS : " + productos.size());
+
+		/*
 		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
 			opcionesBodegas.add(ejbBodegaFacade.findAll().get(i).getNombre());
 		}
+		*/
 		
 		
 		if(opcion == "") {
 			
-			productos = new ArrayList<Producto>();
-			Bodega bodegas = ejbBodegaFacade.buscarBodega(opcionesBodegas.get(0));
-			for(int i=0; i<bodegas.getProductos().size(); i++) {
-				if (bodegas.getProductos().get(i).getEstado() == estado) {
-					productos.add(bodegas.getProductos().get(i));
-				}
-			}
-			
-		}else {
-			
-			productos = new ArrayList<Producto>();
-			Bodega bodegas = ejbBodegaFacade.buscarBodega(opcion);
-			for(int i=1; i<bodegas.getProductos().size(); i++) {
-				if (bodegas.getProductos().get(i).getEstado() == estado) {
-					productos.add(bodegas.getProductos().get(i));
+				productos = new ArrayList<Producto>();
+				Bodega bodegas = ejbBodegaFacade.buscarBodega("Bodega Cuencanito");
+				for(int i=0; i<bodegas.getProductos().size(); i++) {
+					if (bodegas.getProductos().get(i).getEstado() == estado) {
+						productos.add(bodegas.getProductos().get(i));
+					}
 				}
 				
-			}
+			
+			
+			
+		}else {
+				//System.out.println("opcion elejida : " + opcion);
+				productos = new ArrayList<Producto>();
+				Bodega bodegas = ejbBodegaFacade.buscarBodega(opcion);
+				for(int i=0; i<bodegas.getProductos().size(); i++) {
+					if (bodegas.getProductos().get(i).getEstado() == estado) {
+						productos.add(bodegas.getProductos().get(i));
+					}
+					
+				}
+				
 		}
 		
 		
-		
-		
-		
-		//productos = productosBodega("Bodega ");
-		
-		//opciones.add("General");
-		//opciones.add("Bodega Cuencanito");
-		//opciones.add("Bodega Zamborondeno");
-		//opciones.add("Categoria");
 	}
 	
 	
@@ -173,10 +193,10 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	*/
 	
 	
-	/*
+	
 	public void productosBodega() {
 		
-		
+		/*
 		
 		System.out.println("ver opcion elejida  : " + opcion);
 		productos = new ArrayList<Producto>();
@@ -184,11 +204,12 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		for(int i=0; i<bodegas.getProductos().size(); i++) {
 			productos.add(bodegas.getProductos().get(i));
 		}
+		*/
 		
 		
 		constructor();
 	}
-*/
+
 	
 	
 	public void Eliminar(Producto pro) {
@@ -206,6 +227,9 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	}
 	
 	public void Editar(Producto pro2) {
+		
+		System.out.println("llega 1");
+		
 		try {
 			System.out.println("llega a NOMBRE : " + pro2.getNombre());
 			System.out.println("llega a PRECIO : " + pro2.getPrecio());
@@ -264,14 +288,7 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	}
 	
 	
-	public List<Producto> getProductos() {
-		return productos;
-	}
 
-
-	public void setProductos(List<Producto> productos) {
-		InicioPrincipalControler.productos = productos;
-	}
 
 
 	public List<String> getOpciones() {
@@ -400,6 +417,16 @@ public class GestionProductoPorBodegaControler implements Serializable{
 
 	public void setOpcionesBodegas(List<String> opcionesBodegas) {
 		this.opcionesBodegas = opcionesBodegas;
+	}
+
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 
 	

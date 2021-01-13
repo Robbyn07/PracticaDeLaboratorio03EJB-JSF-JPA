@@ -15,16 +15,14 @@
     	<h:commandButton value="Salir" action="#{gestionProductoPorBodegaControler.salir}"/>
     	
     	<h:selectOneMenu value="#{gestionProductoPorBodegaControler.opcion}">
-		<f:selectItems value="#{gestionProductoPorBodegaControler.opcionesBodegas}"/>
+		<f:selectItems value="#{gestionProductoPorBodegaControler.opciones}"/>
 		</h:selectOneMenu>
-		<h:commandButton value="Consultar" action="#{gestionProductoPorBodegaControler.constructor()}"></h:commandButton>
+		<h:commandButton value="Consultar" action="#{gestionProductoPorBodegaControler.productosBodega}"></h:commandButton>
 	
 	
 	
 	    <h:dataTable value="#{gestionProductoPorBodegaControler.productos}" var="p" class="table align-items-center table-flush" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-	    	<h:column>
-	    		<f:facet  name="header" id="bodega">Bodega</f:facet>#{p.bodegas.get(0).nombre}
-	    	</h:column>
+	    	
 	    	<h:column>
 	    		<f:facet name="header" id="categoria">Categoria</f:facet>#{p.categoria.nombre}
 	    	</h:column>
