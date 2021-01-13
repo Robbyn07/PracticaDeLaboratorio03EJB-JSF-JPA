@@ -150,15 +150,14 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>agregarb</from-outcome>
-			<to-view-id>/AgregarBodega.xhtml</to-view-id>
-		</navigation-case>
-		
-		<navigation-case>
 			<from-outcome>editarb</from-outcome>
 			<to-view-id>/EditarBodega.xhtml</to-view-id>
 		</navigation-case>
 		
+		<navigation-case>
+			<from-outcome>agregarP</from-outcome>
+			<to-view-id>/AgregarProductoPorBodega.xhtml</to-view-id>
+		</navigation-case>
 		
 		<navigation-case>
 			<from-outcome>gestionp</from-outcome>
@@ -166,15 +165,12 @@
 		</navigation-case>
 		
 		<navigation-case>
-			<from-outcome>elim </from-outcome>
-			<to-view-id>/ .xhtml</to-view-id>
-		</navigation-case>
-		
-		<navigation-case>
 			<from-outcome>salir</from-outcome>
 			<to-view-id>/inicio.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	
 	
 	<navigation-rule>
 		<from-view-id>/InventarioGeneral.xhtml</from-view-id>
@@ -184,19 +180,9 @@
 		</navigation-case>
 	</navigation-rule>
 	
-	<navigation-rule>
-		<from-view-id>/AgregarBodega.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>agregarb</from-outcome>
-			<to-view-id>/AgregarBodega.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>inicioa</from-outcome>
-			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
 	
-		<navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/EditarBodega.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>editarb</from-outcome>
@@ -207,6 +193,21 @@
 			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/AgregarProductoPorBodega.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>agregarP</from-outcome>
+			<to-view-id>/AgregarProductoPorBodega.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicioa</from-outcome>
+			<to-view-id>/InicioAdministrador.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
 	
 	<navigation-rule>
 		<from-view-id>/GestionProductoPorBodega.xhtml</from-view-id>

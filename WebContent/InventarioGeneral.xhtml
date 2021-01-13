@@ -14,10 +14,8 @@
     
    		<h:commandButton value="Salir" action="#{consultaInventarioGeneralControler.salir}"></h:commandButton>
     
-    	<h:dataTable value="#{consultaInventarioGeneralControler.listProducto}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
-    		<h:column>
-    			<f:facet name="header">Estado</f:facet>#{c.estado}
-    		</h:column>
+    	<h:dataTable value="#{consultaInventarioGeneralControler.productos}" var="c" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar, filaImpar">
+    		
     		<h:column>
     			<f:facet name="header">Nombre</f:facet>#{c.nombre}
     		</h:column>
@@ -27,9 +25,7 @@
     		<h:column>
     			<f:facet name="header">Stock</f:facet>#{c.stock}
     		</h:column>
-    		<h:column>
-    			<f:facet name="header">Categoria</f:facet>#{c.categoria.nombre}
-    		</h:column>
+    		
     	</h:dataTable>
     </h:form>
     

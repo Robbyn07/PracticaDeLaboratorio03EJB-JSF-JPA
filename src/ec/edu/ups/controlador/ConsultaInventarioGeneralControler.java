@@ -27,20 +27,13 @@ public class ConsultaInventarioGeneralControler implements Serializable {
 	@EJB
 	private ProductoFacade ejbProductoFacade;
 	
-	@EJB
-	private CategoriaFacade ejbCategoriaFacade;
-	
-	private List<Producto> listProducto;
-	private List<Categoria> listCategoria;
-	private Categoria categoria;
-	private Producto producto;
-	
+	public static List<Producto> productos = new ArrayList<Producto>();
 	
 	@PostConstruct
 	public void cargarLista() {
-		listProducto = new ArrayList<Producto>();
-		listCategoria = new ArrayList<Categoria>();
-		listProducto = ejbProductoFacade.productosOrdenadosAlfabeticamente();
+		productos = new ArrayList<Producto>();
+		productos = ejbProductoFacade.buscarProductosGeneral();
+		
 	}
 	
 	
@@ -58,17 +51,16 @@ public class ConsultaInventarioGeneralControler implements Serializable {
 		this.ejbProductoFacade = ejbProductoFacade;
 	}
 
-
-	public List<Producto> getListProducto() {
-		return listProducto;
+	
+	public List<Producto> getProductos() {
+		return productos;
 	}
 
 
-	public void setListProducto(List<Producto> listProducto) {
-		this.listProducto = listProducto;
+	public void setProductos(List<Producto> productos) {
+		InicioPrincipalControler.productos = productos;
 	}
 
-    
 }
 
 

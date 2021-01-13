@@ -109,4 +109,17 @@ public class ProductoFacade extends AbstractFacade<Producto>{
 	}
 	
 	
+	public Producto buscarProductoPorNombreUnico (String producto) {
+		try {
+			String jpql = "SELECT pro FROM Producto pro WHERE pro.estado != 'E' AND pro.nombre='" + producto + "'";
+			Producto pro = (Producto) em.createQuery(jpql).getSingleResult();
+			return pro;
+			
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+	
+	
 }

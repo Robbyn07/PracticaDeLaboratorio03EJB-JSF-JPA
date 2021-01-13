@@ -30,18 +30,12 @@
 	<h:form>
 		<h:commandLink class="nav-link-text" value="Consultar Inventario General" action="#{inicioAdministradorControler.redirigir('inventariog')}"/>
 		
-		<h:commandLink class="nav-link-text"  value="Agregar Bodega" action="#{inicioAdministradorControler.redirigir('agregarb')}"/>
 		<h:commandLink class="nav-link-text" value="Editar Bodega" action="#{inicioAdministradorControler.redirigir('editarb')}"/>
 		<h:commandLink class="nav-link-text" value="Gestion Producto por Bodega" action="#{inicioAdministradorControler.redirigir('gestionp')}"/>
 		
+		<h:commandButton value="Editar Bodega" action="#{inicioAdministradorControler.redirigir('editarb')}"/>
 		
-		
-		<h:commandLink class="nav-link-text" value="Editar Producto" action="#{inicioAdministradorEmpleadoControler.redirigir('editarp')}"/>
-		<h:commandLink class="nav-link-text" value="Buscar producto" action="#{inicioAdministradorEmpleadoControler.redirigir('buscarp')}"/>
-		<h:commandLink class="nav-link-text" value="Eliminar Prodcuto" action="#{inicioAdministradorEmpleadoControler.redirigir('eliminarp')}"/>
-		<h:commandLink class="nav-link-text" value="Aumentar Stock por Bodega" action="#{inicioEmpleadoControler.redirigir(' ')}"/>
-		
-		<h:commandLink class="nav-link-text" value="Consultar Inventario por Bodega" action="#{inicioEmpleadoControler.redirigir('agregarc')}"/>
+		<h:commandButton value="Agregar Producto" action="#{inicioAdministradorControler.redirigir('agregarP')}"/>
 		
 		<h:commandLink class="nav-link-text" value="Salir" action="#{inicioEmpleadoControler.redirigir('salir')}"/>
 		

@@ -9,73 +9,53 @@
     <title>Gestion Producto por Bodega</title>
 </h:head>
 <h:body>
-
-    <script type="text/javascript">
-    	function indicador(data){
-    		if(data.status =="begin")
-    			document.getElementById("id5").style.display = "inline";
-    		else if (data.status == "success")
-    			document.getElementById("id5").style.display = "none";
-    	}
-    </script>
     
+    <h:form id="general">
     
-    <h:form>
-    
-    	<h:commandButton value="Salir" action="#{gestionProductoPorBodegaControler.salir}">
-		</h:commandButton>
-    
-    	<div id="buscarBodega">
-    		<h:selectOneMenu value="#{gestionProductoPorBodegaControler.bodega}">
-	    		<f:selectItems value="#{gestionProductoPorBodegaControler.listBodegas}"/>
-	    		<f:ajax render="bodega"/>
-	    	</h:selectOneMenu>
+    	<h:commandButton value="Salir" action="#{gestionProductoPorBodegaControler.salir}"/>
     	
-    	
-    		<h:commandButton value="Consultar" actionListener="#{gestionProductoPorBodegaControler.consultar}" update="list:ListaProductos">
-	    	</h:commandButton>
-    	
-    	</div>
-    	
-    	<div >
-    		<h:dataTable id="listaProductos" value="#{gestionProductoPorBodegaControler.listBodegas}" var="p" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
-    			<h:column>
-    				<f:facet name="header" id="proestado">Estado</f:facet>#{p.bodega.producto.get(0).estado}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="pronombre">Nombre</f:facet>#{p.bodega.producto.get(0).nombre}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="proprecio">Precio</f:facet>#{p.bodega.producto.get(0).precio}
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="prostock">Stock</f:facet>
-    				<h:inputText id="procantidad" value="#{p.bodega.producto.get(0).stock}"></h:inputText>
-    			</h:column>
-    			<h:column>
-    				<f:facet name="header" id="prostock">Categoria</f:facet>#{p.bodega.producto.get(0).categoria.nombre}
-    			</h:column>
-    			
-    			<h:column>
-    				<f:facet name="header" id="proagregar">Agregar</f:facet>
-					<h:commandButton value="Agregar" >
-					</h:commandButton>
-    			</h:column>
-    			
-    			<h:column>
-    				<f:facet name="header" id="proeditar">Editar</f:facet>
-					<h:commandButton value="Editar" >
-					</h:commandButton>
-    			</h:column>
-    			
-    		</h:dataTable>
-    	</div>
-    	
-    	
-    	<span id="id5" style="display: none;"></span>
-    
+    	<h:selectOneMenu value="#{gestionProductoPorBodegaControler.opcion}">
+		<f:selectItems value="#{gestionProductoPorBodegaControler.opciones}"/>
+		</h:selectOneMenu>
+		<h:commandButton value="Consultar" action="#{gestionProductoPorBodegaControler.productosBodega}"></h:commandButton>
+	
+	
+	
+	    <h:dataTable value="#{gestionProductoPorBodegaControler.productos}" var="p" class="table align-items-center table-flush" styleClass="tabla" headerClass="cabeceraTabla" rowClasses="filaPar,filaImpar">
+	    	<h:column>
+	    		<f:facet  name="header" id="bodega">Bodega</f:facet>#{p.bodegas.get(0).nombre}
+	    	</h:column>
+	    	<h:column>
+	    		<f:facet name="header" id="categoria">Categoria</f:facet>#{p.categoria.nombre}
+	    	</h:column>
+	    	<h:column>
+	    		<f:facet name="header" id="nombre">Nombre</f:facet>
+	    		<h:inputText id="nombreP"  value="#{p.nombre}"></h:inputText>
+	    	</h:column>
+	    	
+	    	<h:column>
+	    		<f:facet name="header" id="precio">Precio</f:facet>
+	    		<h:inputText id="precioP"  value="#{p.precio}"></h:inputText>
+	    	</h:column>
+	    	<h:column>
+	    		<f:facet name="header" id="stock">Stock</f:facet>
+	    		<h:inputText id="stockP"  value="#{p.stock}"></h:inputText>
+	    	</h:column>
+	    	
+	    	<h:column>
+    			<f:facet name="header">Editar</f:facet>
+				<h:commandButton value="Editar" action="#{gestionProductoPorBodegaControler.Editar(p)}" ></h:commandButton>
+				
+			</h:column>
+			<h:column>
+    			<f:facet name="header">Eliminar</f:facet>
+    			<h:commandButton value="Eliminar"  action="#{gestionProductoPorBodegaControler.Eliminar(p)}" ></h:commandButton>
+			</h:column>
+	    	
+	    </h:dataTable>
 	    
-    </h:form>
-  	
+	</h:form>
+		     
+		     
 </h:body>
 </html>
