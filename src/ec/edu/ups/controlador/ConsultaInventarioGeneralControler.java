@@ -8,9 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.annotation.FacesConfig;
 import javax.inject.Named;
 
-import ec.edu.ups.modelo.Categoria;
 import ec.edu.ups.modelo.Producto;
-import ec.edu.ups.ejb.CategoriaFacade;
 import ec.edu.ups.ejb.ProductoFacade;
 
 import java.util.ArrayList;
@@ -19,7 +17,6 @@ import java.util.List;
 @FacesConfig(version = FacesConfig.Version.JSF_2_3)
 @Named
 @RequestScoped
-
 public class ConsultaInventarioGeneralControler implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -33,6 +30,7 @@ public class ConsultaInventarioGeneralControler implements Serializable {
 	public void cargarLista() {
 		productos = new ArrayList<Producto>();
 		productos = ejbProductoFacade.buscarProductosGeneral();
+		System.out.println("count  " + productos.size() );
 		
 	}
 	
