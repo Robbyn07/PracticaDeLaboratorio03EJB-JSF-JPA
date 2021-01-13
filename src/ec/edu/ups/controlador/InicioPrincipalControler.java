@@ -36,15 +36,20 @@ public class InicioPrincipalControler implements Serializable{
 	public static List<Producto> productos = new ArrayList<Producto>();
 	private List<String> opciones = new ArrayList<String>();
 	private String opcion = "";
+	private String b1 ="";
+	private String b2 ="";
 	
 	@PostConstruct
 	public void constructor() {
 		opciones = new ArrayList<String>();
 		productos = new ArrayList<Producto>();
 		productos = ejbProductoFacade.findAll();
+		List<Bodega> bodegas = ejbBodegaFacade.findAll();
+		b1 = bodegas.get(0).getNombre();
+		b2 = bodegas.get(1).getNombre();
 		opciones.add("General");
-		opciones.add("Bodega Cuencanito");
-		opciones.add("Bodega Zamborondeno");
+		opciones.add(b1);
+		opciones.add(b2);
 		opciones.add("Categoria");
 	}
 	
@@ -54,19 +59,14 @@ public class InicioPrincipalControler implements Serializable{
 	}
 	
 	public void eleccion() {
-		switch(opcion) {
-		case "General":
+		if(opcion.equals("General")) {
 			this.productosGeneral();
-			break;
-		case "Bodega Cuencanito":
-			this.productosBodega("Bodega Cuencanito");
-			break;
-		case "Bodega Zamborondeno":
-			this.productosBodega("Bodega Zamborondeno");
-			break;
-		case "Categoria":
+		}else if(opcion.equals(b1)) {
+			this.productosBodega(b1);
+		}else if(opcion.equals(b2)) {
+			this.productosBodega(b2);
+		}else if(opcion.equals("Categoria")) {
 			this.productosCategoria();
-			break;
 		}
 	}
 	
