@@ -40,6 +40,8 @@ public class InicioPrincipalControler implements Serializable{
 	@PostConstruct
 	public void constructor() {
 		opciones = new ArrayList<String>();
+		productos = new ArrayList<Producto>();
+		productos = ejbProductoFacade.findAll();
 		opciones.add("General");
 		opciones.add("Bodega Cuencanito");
 		opciones.add("Bodega Zamborondeno");
