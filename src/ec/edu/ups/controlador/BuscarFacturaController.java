@@ -26,7 +26,7 @@ public class BuscarFacturaController implements Serializable {
 	private ProductoFacade ejbProductoFacade;
 	
 	private String cedula;
-	private int id;
+	private String id;
 	public static List<FacturaCabecera> cabecerass = new ArrayList<FacturaCabecera>();
 	public static List<FacturaDetalle> detalless = new ArrayList<FacturaDetalle>();
 	
@@ -44,7 +44,7 @@ public class BuscarFacturaController implements Serializable {
 	public void buscarPorId() {
 		cabecerass = new ArrayList<FacturaCabecera>();
 		try {
-			cabecerass.add(ejbFacturaCabeceraFacade.buscarPorCodigo(id));
+			cabecerass.add(ejbFacturaCabeceraFacade.buscarPorCodigo(Integer.parseInt(id)));
 			detalless = new ArrayList<FacturaDetalle>();
 			this.setDetalless(cabecerass.get(0).getFacturasDetalle());
 		} catch (Exception e) {
@@ -78,10 +78,10 @@ public class BuscarFacturaController implements Serializable {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
