@@ -15,6 +15,13 @@ public class InicioAdministradorControler implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	public String redirigir(String pagina) {
+		
+		SessionUtils sU = new SessionUtils();
+		
+		if(pagina.equals("salir")) {
+			sU.logout();
+		}
+		
 		return pagina;
 	}
 	 

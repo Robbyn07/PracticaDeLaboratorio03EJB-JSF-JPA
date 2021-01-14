@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet Filter implementation class Filtro
  */
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
+@WebFilter({"/AgregarBodega.jsf","/AgregarCliente.jsf","/AgregarProductoPorBodega.jsf","/AnularFactura.jsf","/BuscarFactura.jsf","/EditarBodega",
+	"/EditarCliente.jsf","/EliminarCliente.jsf","/GenerarFactura.jsf","/GestionProductoPorBodega.jsf","/InicioAdministrador.jsf","/InicioEmpleado.jsf",
+	"/InventarioGeneral.jsf","/ListadoBodegas.jsf"})
 public class Filtro implements Filter {
 
     public Filtro() {
@@ -41,7 +43,6 @@ public class Filtro implements Filter {
 			chain.doFilter(request, response);
 		}
 		*/
-		
 		try {
 
 			HttpServletRequest reqt = (HttpServletRequest) request;
@@ -49,13 +50,10 @@ public class Filtro implements Filter {
 			HttpSession ses = reqt.getSession(false);
 
 			String reqURI = reqt.getRequestURI();
-			
-			if (reqURI.indexOf("/index.xhtml") >= 0
-					|| (ses != null && ses.getAttribute("accesos") != null)
-					|| reqURI.contains("javax.faces.resource"))
+			if (ses.getAttribute("accesos") != null)
 				chain.doFilter(request, response);
 			else
-				resp.sendRedirect(reqt.getContextPath() + "/login.xhtml");
+				resp.sendRedirect(reqt.getContextPath() + "/inicio.jsf");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

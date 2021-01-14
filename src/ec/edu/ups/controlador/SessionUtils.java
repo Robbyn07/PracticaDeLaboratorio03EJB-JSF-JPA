@@ -1,32 +1,20 @@
 package ec.edu.ups.controlador;
 
+import java.io.Serializable;
+
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-public class SessionUtils {
+public class SessionUtils implements Serializable{
 	
-	public static HttpSession getSession() {
-		return (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-	}
+	private static final long serialVersionUID = 1L;
 
-	public static HttpServletRequest getRequest() {
-		return (HttpServletRequest) FacesContext.getCurrentInstance()
-				.getExternalContext().getRequest();
+	public void login() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("accesos", 1);
 	}
-
-	public static String getUserName() {
-		HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-				.getExternalContext().getSession(false);
-		return session.getAttribute("accesos").toString();
-	}
-
-	public static String getUserId() {
-		HttpSession session = getSession();
-		if (session != null)
-			return (String) session.getAttribute("userid");
-		else
-			return null;
+	
+	public void logout() {
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("accesos", null);
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 }
