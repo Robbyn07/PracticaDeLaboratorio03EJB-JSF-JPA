@@ -74,17 +74,6 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		
 		char estado = 72;
 		
-		
-		
-		/*
-		opciones = new ArrayList<String>();
-		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
-			System.out.println("nomber V : "+  ejbBodegaFacade.findAll().get(i).getNombre());
-			String a = ejbBodegaFacade.findAll().get(i).getNombre();
-			opciones.add(a);
-		
-		}
-		*/
 		opciones = new ArrayList<String>();
 		
 		List<Bodega> bo = ejbBodegaFacade.findAll();
@@ -93,37 +82,9 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		opciones.add(b1);
 		opciones.add(b2);
 		
-		
-		
-		//opciones.add("Bodega Cuencanito");
-		//opciones.add("Bodega Zamborondeno");
-		
-		
-		//System.out.println("count de list categoria : " + opcionesCategorias.size());
-		
-		/*
-		if(opcionesCategorias.size() == 0 ) {
-			for(int i=0; i<ejbCategoriaFacade.findAll().size(); i++) {
-				opcionesCategorias.add(ejbCategoriaFacade.findAll().get(i).getNombre());
-			}
-		}else {
-			System.out.println("count de list categoria : " + opcionesCategorias.size());
-		}
-		*/
-		
-		
-		
-		//productos = new ArrayList<Producto>();
-		//productos = ejbProductoFacade.findAll();
-		
 		System.out.println("verrr : " + opcion);
 		System.out.println("TAMAÑO LISTA PRODUCTOS : " + productos.size());
 
-		/*
-		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
-			opcionesBodegas.add(ejbBodegaFacade.findAll().get(i).getNombre());
-		}
-		*/
 		
 		
 		if(opcion == "") {
@@ -158,64 +119,11 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	
 	public void eleccion() {
 		System.out.println("ver opcion elejida  : " + opcion);
-		//this.productosBodega(opcion);
 		
-		/*
-		switch(opcion) {
-		
-		case "General":
-			this.productosGeneral();
-			break;
-			
-		
-		case "Bodega Cuencanito":
-			this.productosBodega("Bodega Cuencanito");
-			break;
-		case "Bodega Zamborondeno":
-			this.productosBodega("Bodega Zamborondeno");
-			break;
-		
-		case "Categoria":
-			this.productosCategoria();
-			break;
-			
-		}
-		*/
 	}
-	
-	
-	/*
-	public void productosGeneral() {
-		productos = new ArrayList<Producto>();
-		productos = ejbProductoFacade.buscarProductosGeneral();
-	}
-	
-	public void productosCategoria() {
-		productos = new ArrayList<Producto>();
-		List<Categoria> categorias = ejbCategoriaFacade.findAll();
-		for(int i=0; i<categorias.size(); i++) {
-			for(int j=0; j<categorias.get(i).getProductos().size(); j++) {
-				productos.add(categorias.get(i).getProductos().get(j));
-			}
-		}
-		productos = ejbProductoFacade.buscarProductoPorCategoriaGeneral();
-	}
-	*/
-	
 	
 	
 	public void productosBodega() {
-		
-		/*
-		
-		System.out.println("ver opcion elejida  : " + opcion);
-		productos = new ArrayList<Producto>();
-		Bodega bodegas = ejbBodegaFacade.buscarBodega(opcion);
-		for(int i=0; i<bodegas.getProductos().size(); i++) {
-			productos.add(bodegas.getProductos().get(i));
-		}
-		*/
-		
 		
 		constructor();
 	}
