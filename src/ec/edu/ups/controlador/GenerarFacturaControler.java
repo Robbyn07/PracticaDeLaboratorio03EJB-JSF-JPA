@@ -80,18 +80,24 @@ public class GenerarFacturaControler implements Serializable {
 	}
 	
 	public void filtrar() {
-		if(productoBuscar.equals("")) {
-			productosEscoger = ejbBodegaFacade.buscarBodega(bodega).getProductos();
-		}else {
-			List<Producto> pr = ejbProductoFacade.buscarProductoPorNombre(productoBuscar);
+		try {
 			productosEscoger = new ArrayList<Producto>();
-			for(int i=0; i<pr.size(); i++) {
-				if(pr.get(i).getBodegas().get(0).getNombre().equals(bodega)) {
-					productosEscoger.add(pr.get(i));
+			if(productoBuscar.equals("")) {
+				productosEscoger = ejbBodegaFacade.buscarBodega(bodega).getProductos();
+			}else {
+				List<Producto> pr = ejbProductoFacade.buscarProductoPorNombre(productoBuscar);
+				productosEscoger = new ArrayList<Producto>();
+				for(int i=0; i<pr.size(); i++) {
+					if(pr.get(i).getBodegas().get(0).getNombre().equals(bodega)) {
+						productosEscoger.add(pr.get(i));
+					}
 				}
+				
 			}
-			
+		} catch (Exception e) {
+			System.out.println("No se pudo encontrar el producto por alguna razon ajena a mi entendimiento actual xd");
 		}
+			
 		
 	}
 	
