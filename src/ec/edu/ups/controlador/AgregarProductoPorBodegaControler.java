@@ -78,9 +78,6 @@ public class AgregarProductoPorBodegaControler implements Serializable{
 		
 		Producto comprobar = null;
 		try {
-			comprobar = ejbProductoFacade.buscarProductoPorNombreUnico(nombreA);
-			if(comprobar == null) {
-				
 				System.out.println("VER CATEGORIA ELEGIDA : " + opcionCategoria);
 				
 				Categoria cat = ejbCategoriaFacade.obtenerCategoria(opcionCategoria);
@@ -97,8 +94,8 @@ public class AgregarProductoPorBodegaControler implements Serializable{
 				
 				ejbBodegaFacade.edit(bode);
 				
-			}
-			return "inicioa";
+				return "inicioa";
+				
 			
 		} catch (Exception e) {
 			System.out.println("error en agregar producto");

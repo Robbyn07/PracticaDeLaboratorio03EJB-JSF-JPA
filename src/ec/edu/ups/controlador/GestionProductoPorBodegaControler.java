@@ -54,7 +54,12 @@ public class GestionProductoPorBodegaControler implements Serializable{
 	private String precioA="";
 	private String stockA="";
 	
+	private String b1 ="";
+	private String b2 ="";
+	
 	private Bodega bode = null;
+	//private Bodega bode2 = null;
+	//private List<Bodega> bod2 = new ArrayList<Bodega>();
 	
 //	private Categoria cat0 = null;
 	
@@ -69,24 +74,29 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		
 		char estado = 72;
 		
+		
+		
+		/*
 		opciones = new ArrayList<String>();
 		for(int i=0; i<ejbBodegaFacade.findAll().size(); i++) {
-			opciones.add(ejbBodegaFacade.findAll().get(i).getNombre());
+			System.out.println("nomber V : "+  ejbBodegaFacade.findAll().get(i).getNombre());
+			String a = ejbBodegaFacade.findAll().get(i).getNombre();
+			opciones.add(a);
 		
 		}
+		*/
+		opciones = new ArrayList<String>();
+		
+		List<Bodega> bo = ejbBodegaFacade.findAll();
+		b1 = bo.get(0).getNombre();
+		b2 = bo.get(1).getNombre();
+		opciones.add(b1);
+		opciones.add(b2);
 		
 		
-		
-		
-		//productos = productosBodega("Bodega ");
-		
-		//opciones.add("General");
 		
 		//opciones.add("Bodega Cuencanito");
 		//opciones.add("Bodega Zamborondeno");
-		
-		//opciones.add("Categoria");
-		
 		
 		
 		//System.out.println("count de list categoria : " + opcionesCategorias.size());
@@ -427,6 +437,25 @@ public class GestionProductoPorBodegaControler implements Serializable{
 
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
+	}
+
+	public String getB1() {
+		return b1;
+	}
+
+
+	public void setB1(String b1) {
+		this.b1 = b1;
+	}
+
+
+	public String getB2() {
+		return b2;
+	}
+
+
+	public void setB2(String b2) {
+		this.b2 = b2;
 	}
 
 	
