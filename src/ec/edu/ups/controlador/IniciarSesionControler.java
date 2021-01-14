@@ -24,19 +24,23 @@ public class IniciarSesionControler implements Serializable{
 	private String paginaRol;
 	private Persona persona = new Persona();
 	
-	public String iniciarSesion() {
-		
+	public String iniciarSesion() {	
 		try {
 			persona = ejbPersonaFacade.verificarUsuario(correo, contrasena);
 			
 			if (persona.getRol() == 'A') {
 				//HttpSession session = request.getSession(true);
 				//session.setAttribute("accesos", 1);
+				HttpSession session = SessionUtils.getSession();
+				session.setAttribute("accesos", correo);
+				
 				
 				paginaRol = "inicioAdministrador";
 			} else if (persona.getRol() == 'E') {
 				//HttpSession session = request.getSession(true);
 				//session.setAttribute("accesos", 1);
+				HttpSession session = SessionUtils.getSession();
+				session.setAttribute("accesos", correo);
 				
 				paginaRol = "inicioEmpleado";
 			}
@@ -50,6 +54,12 @@ public class IniciarSesionControler implements Serializable{
 		
 	}
 
+	public String cerrarSesion() {
+		HttpSession session = SessionUtils.getSession();
+		session.invalidate();
+		return "salir";
+	}
+	
 
 	public String getCorreo() {
 		return correo;
