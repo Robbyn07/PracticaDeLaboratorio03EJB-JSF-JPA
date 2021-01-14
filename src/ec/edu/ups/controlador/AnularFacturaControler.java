@@ -28,7 +28,7 @@ public class AnularFacturaControler implements Serializable {
 	private ProductoFacade ejbProductoFavade;
 	
 	private String cedula;
-	private int id;
+	private String id;
 	public static List<FacturaCabecera> cabeceras = new ArrayList<FacturaCabecera>();
 	public static List<FacturaDetalle> detalles = new ArrayList<FacturaDetalle>();
 	
@@ -46,7 +46,7 @@ public class AnularFacturaControler implements Serializable {
 	public void buscarPorId() {
 		cabeceras = new ArrayList<FacturaCabecera>();
 		try {
-			cabeceras.add(ejbFacturaCabeceraFacade.buscarPorCodigo(id));
+			cabeceras.add(ejbFacturaCabeceraFacade.buscarPorCodigo(Integer.parseInt(id)));
 			detalles = new ArrayList<FacturaDetalle>();
 			this.setDetalles(cabeceras.get(0).getFacturasDetalle());
 		} catch (Exception e) {
@@ -93,10 +93,10 @@ public class AnularFacturaControler implements Serializable {
 	public void setCedula(String cedula) {
 		this.cedula = cedula;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

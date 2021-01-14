@@ -32,7 +32,6 @@ public class GenerarFacturaControler implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	
 	@EJB
 	private ProductoFacade ejbProductoFacade;
 	
@@ -74,14 +73,10 @@ public class GenerarFacturaControler implements Serializable {
 	public void datos() {
 		bodegas = ejbBodegaFacade.findAll();
 		
-		
 		//productosEscoger = ejbProductoFacade.findAll();
-		
 		stringBodega(bodegas);
 		
 		bodega = listBodega.get(0);
-			
-		
 	}
 	
 	public void filtrar() {
