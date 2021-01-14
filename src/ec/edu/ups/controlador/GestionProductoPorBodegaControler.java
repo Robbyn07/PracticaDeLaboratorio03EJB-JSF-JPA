@@ -119,7 +119,7 @@ public class GestionProductoPorBodegaControler implements Serializable{
 		if(opcion == "") {
 			
 				productos = new ArrayList<Producto>();
-				Bodega bodegas = ejbBodegaFacade.buscarBodega("Bodega Cuencanito");
+				Bodega bodegas = ejbBodegaFacade.buscarBodega(opciones.get(0));
 				for(int i=0; i<bodegas.getProductos().size(); i++) {
 					if (bodegas.getProductos().get(i).getEstado() == estado) {
 						productos.add(bodegas.getProductos().get(i));
