@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import ec.edu.ups.ejb.PersonaFacade;
 import ec.edu.ups.modelo.Persona;
@@ -29,9 +30,13 @@ public class IniciarSesionControler implements Serializable{
 			persona = ejbPersonaFacade.verificarUsuario(correo, contrasena);
 			
 			if (persona.getRol() == 'A') {
-			
+				//HttpSession session = request.getSession(true);
+				//session.setAttribute("accesos", 1);
+				
 				paginaRol = "inicioAdministrador";
 			} else if (persona.getRol() == 'E') {
+				//HttpSession session = request.getSession(true);
+				//session.setAttribute("accesos", 1);
 				
 				paginaRol = "inicioEmpleado";
 			}
@@ -45,7 +50,6 @@ public class IniciarSesionControler implements Serializable{
 		
 	}
 
-	
 
 	public String getCorreo() {
 		return correo;
