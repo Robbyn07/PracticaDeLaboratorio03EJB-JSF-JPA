@@ -80,9 +80,36 @@
 		<h:form role="form">
 			<!-- Card stats  "container-fluid mt-'-'6"  -->
 			<div class="container-fluid mt--6">
-		        <div class="row" id="datosCliente">
+		        <div class="row">
 		        	
-		        	<div class="col-sm">
+		        	<div class="col" id="buscarProductos">
+						<div class="card card-stats">
+				               <!-- Card body -->
+			   				<div class="card-body">
+			           			<div class="row">
+			               			<div class="col">
+				                    	<div class="form-group mb-3">
+								   			<label class="form-control-label">Categoria: </label>
+									    	<h:selectOneMenu class="form-control form-control-sm" value="#{generarFacturaControler.bodega}" id="producto">
+									    		<f:selectItems value="#{generarFacturaControler.listBodega}"/>
+									    	</h:selectOneMenu>
+								    	</div>  
+										    	
+								    	<div class="form-group mb-3">
+									    	<label class="form-control-label">Producto: </label>
+									    	<h:inputText class="form-control form-control-sm" id="probu" value="#{generarFacturaControler.productoBuscar}"/>
+								    	</div>
+								    	
+								    	<div class="text-center">
+						    				<h:commandButton value="Filtrar Productos" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos" class="btn btn-primary btn-sm btn-lg btn-block"/>
+						    			</div>
+			                  		</div>
+			               		</div>
+			           		</div>
+						</div>
+					</div>
+					
+					<div id="datosCliente" class="col-sm">
 						<div class="card card-stats">
 		                <!-- Card body -->
 	          				<div class="card-body">
@@ -136,33 +163,7 @@
 	               			</div>
 	           			</div>
 		        	</div>
-		        	
-		        	<div class="col" id="buscarProductos">
-						<div class="card card-stats">
-				               <!-- Card body -->
-			   				<div class="card-body">
-			           			<div class="row">
-			               			<div class="col">
-				                    	<div class="form-group mb-3">
-								   			<label class="form-control-label">Categoria: </label>
-									    	<h:selectOneMenu class="form-control form-control-sm" value="#{generarFacturaControler.bodega}" id="producto">
-									    		<f:selectItems value="#{generarFacturaControler.listBodega}"/>
-									    	</h:selectOneMenu>
-								    	</div>  
-										    	
-								    	<div class="form-group mb-3">
-									    	<label class="form-control-label">Producto: </label>
-									    	<h:inputText class="form-control form-control-sm" id="probu" value="#{generarFacturaControler.productoBuscar}"/>
-								    	</div>
-								    	
-								    	<div class="text-center">
-						    				<h:commandButton value="Filtrar Productos" actionListener="#{generarFacturaControler.filtrar}" update="list:listaProductos" class="btn btn-primary btn-sm btn-lg btn-block"/>
-						    			</div>
-			                  		</div>
-			               		</div>
-			           		</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 					
