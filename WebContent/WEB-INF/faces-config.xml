@@ -224,4 +224,30 @@
 	
 	
 	
+	
+	<navigation-rule>
+		<from-view-id>/ListarPedidos.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>listarped</from-outcome>
+			<to-view-id>/ListarPedidos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/inicio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/RegistrarCliente.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>registrarc</from-outcome>
+			<to-view-id>/RegistrarCliente.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/inicio.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
 </faces-config>

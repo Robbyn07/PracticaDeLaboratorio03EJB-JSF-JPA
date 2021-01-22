@@ -35,6 +35,9 @@ public class Producto implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
     private List<FacturaDetalle> facturaDetalles;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+    private List<PedidoDetalle> pedidoDetalle;
+	
 	public Producto(int id, String nombre, float precio, int stock, char estado, Categoria categoria) {
 		this.setId(id);
 		this.setNombre(nombre);
@@ -122,6 +125,20 @@ public class Producto implements Serializable {
 		this.facturaDetalles.add(facturaDetalles);
 	}
 	
+	
+	
+	public List<PedidoDetalle> getPedidoDetalle() {
+		return pedidoDetalle;
+	}
+
+	public void setPedidoDetalle(List<PedidoDetalle> pedidoDetalle) {
+		this.pedidoDetalle = pedidoDetalle;
+	}
+	
+	public void addPedidoDdetalle(PedidoDetalle pedidoDetalle) {
+		this.pedidoDetalle.add(pedidoDetalle);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

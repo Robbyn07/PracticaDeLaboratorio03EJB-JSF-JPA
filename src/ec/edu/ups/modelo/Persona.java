@@ -33,6 +33,9 @@ public class Persona implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<FacturaCabecera> facturasCab= new ArrayList<FacturaCabecera>();
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
+    private List<PedidoCabecera> pedidosCab= new ArrayList<PedidoCabecera>();
     
 	public Persona(int id, String nombre, String apellido, String cedula, String direccion, String telefono, String correo, String contrasena, char rol, char estado) {
     	this.setId(id);
@@ -131,6 +134,23 @@ public class Persona implements Serializable {
 		this.facturasCab = facturasCab;
 	}
 	
+	public void addFacturasCab(FacturaCabecera facturasCab) {
+		this.facturasCab.add(facturasCab);
+	}
+	
+	
+	public List<PedidoCabecera> getPedidosCab() {
+		return pedidosCab;
+	}
+
+	public void setPedidosCab(List<PedidoCabecera> pedidosCab) {
+		this.pedidosCab = pedidosCab;
+	}
+	
+	public void addPedidosCab(PedidoCabecera pedidosCab) {
+		this.pedidosCab.add(pedidosCab);
+	}
+
 	public char getEstado() {
 		return estado;
 	}
@@ -138,6 +158,8 @@ public class Persona implements Serializable {
 	public void setEstado(char estado) {
 		this.estado = estado;
 	}
+	
+	
 	
 	@Override
 	public int hashCode() {

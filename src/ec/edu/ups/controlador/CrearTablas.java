@@ -1,6 +1,7 @@
 package ec.edu.ups.controlador;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,12 +12,16 @@ import javax.inject.Named;
 import ec.edu.ups.ejb.BodegaFacade;
 import ec.edu.ups.ejb.CategoriaFacade;
 import ec.edu.ups.ejb.CiudadFacade;
+import ec.edu.ups.ejb.PedidoCabeceraFacade;
+import ec.edu.ups.ejb.PedidoDetalleFacade;
 import ec.edu.ups.ejb.PersonaFacade;
 import ec.edu.ups.ejb.ProductoFacade;
 import ec.edu.ups.ejb.ProvinciaFacade;
 import ec.edu.ups.modelo.Bodega;
 import ec.edu.ups.modelo.Categoria;
 import ec.edu.ups.modelo.Ciudad;
+import ec.edu.ups.modelo.PedidoCabecera;
+import ec.edu.ups.modelo.PedidoDetalle;
 import ec.edu.ups.modelo.Persona;
 import ec.edu.ups.modelo.Producto;
 import ec.edu.ups.modelo.Provincia;
@@ -45,6 +50,12 @@ public class CrearTablas implements Serializable{
 	
 	@EJB
 	private BodegaFacade ejbBodegaFacade;
+	
+	@EJB
+	private PedidoCabeceraFacade ejbPedidoCabeceraFacade;
+	
+	@EJB
+	private PedidoDetalleFacade ejbPedidoDetalleFacade;
 	
 	public void agregarDatos() {
 		
@@ -128,6 +139,23 @@ public class CrearTablas implements Serializable{
 		ejbProductoFacade.create(prod7);
 		ejbProductoFacade.create(prod8);
 		*/
+		
+
+		
+		List<Producto> prods = ejbProductoFacade.findAll();
+		Persona per = ejbPersonaFacade.buscarCliente("1900848886");
+		
+		List<PedidoDetalle> pedDet = new ArrayList<PedidoDetalle>();
+		PedidoCabecera pedCab = new PedidoCabecera(0, "Enviado", "Receptado", per);
+
+		
+		pedDet.add(new PedidoDetalle(0, 12, prods.get(0), pedCab));
+		pedDet.add(new PedidoDetalle(0, 15, prods.get(1), pedCab));
+		
+		pedCab.setPedidoDetalle(pedDet);
+		
+		ejbPedidoCabeceraFacade.create(pedCab);
+		
 	}
 
 	

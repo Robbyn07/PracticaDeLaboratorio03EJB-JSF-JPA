@@ -10,6 +10,8 @@
 		<class>ec.edu.ups.modelo.Ciudad</class>
 		<class>ec.edu.ups.modelo.Provincia</class>
 		<class>ec.edu.ups.modelo.Categoria</class>
+		<class>ec.edu.ups.modelo.PedidoCabecera</class>
+		<class>ec.edu.ups.modelo.PedidoDetalle</class>
 		
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action" value="create"/>
