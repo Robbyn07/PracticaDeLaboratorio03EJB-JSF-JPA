@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>PracticaDeLaboratorio03EJB-JSF-JPA</display-name>
+  <display-name>PracticaDeLaboratorio03EJB-JSF-JPA-Presentada</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -20,15 +20,12 @@
     <url-pattern>*.jsf</url-pattern>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
-  
   <error-page>
     <error-code>404</error-code>
     <location>/Error404.xhtml</location>
   </error-page>
-  
   <error-page>
     <error-code>500</error-code>
     <location>/Error500.xhtml</location>
   </error-page>
-  
 </web-app>
