@@ -279,3 +279,5 @@
 ![1](/ImagenesReadme/75.jpg?raw=true "Title")
 
   De la misma manera que para el error 404, editamos el archivo web.xml para la implementación del error 500.
+  
+  Te estoy observando.
