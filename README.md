@@ -280,4 +280,4 @@
 
   De la misma manera que para el error 404, editamos el archivo web.xml para la implementación del error 500.
   
-  Copiar .war a GlassFish x2.
+  Copiar .war a GlassFish x3.
