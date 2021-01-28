@@ -1,5 +1,7 @@
 package ec.edu.ups.ejb;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,4 +41,10 @@ public class CategoriaFacade extends AbstractFacade<Categoria>{
 		Categoria cat = (Categoria) em.createQuery(jpql).getSingleResult();
 		return cat;
 	}
+	
+	public List<Categoria> categoriasOrdenadas(){
+        String jpql = "SELECT cat FROM Categoria cat ORDER BY cat.nombre" ;
+        List<Categoria> cat = em.createQuery(jpql).getResultList();
+        return cat;
+    }
 }

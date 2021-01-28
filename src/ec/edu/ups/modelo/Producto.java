@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 /**
@@ -25,17 +27,28 @@ public class Producto implements Serializable {
 	private int stock;
 	private char estado;
 	
+	@Transient
+    @JsonbProperty("bodega")
+    private String bodegaNombre;
+    @Transient
+    @JsonbProperty("categoria")
+    private String categoriaNombre;
+	
 	@ManyToOne
 	@JoinColumn
+	@JsonbTransient
 	private Categoria categoria;
 	
 	@ManyToMany(mappedBy = "productos")
+	@JsonbTransient
 	private List<Bodega> bodegas;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+	@JsonbTransient
     private List<FacturaDetalle> facturaDetalles;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "producto")
+	@JsonbTransient
     private List<PedidoDetalle> pedidoDetalle;
 	
 	public Producto(int id, String nombre, float precio, int stock, char estado, Categoria categoria) {
@@ -159,5 +172,21 @@ public class Producto implements Serializable {
 		if (id != other.id)
 		    return false;
 		return true;
+	}
+
+	public String getBodegaNombre() {
+		return bodegaNombre;
+	}
+
+	public void setBodegaNombre(String bodegaNombre) {
+		this.bodegaNombre = bodegaNombre;
+	}
+
+	public String getCategoriaNombre() {
+		return categoriaNombre;
+	}
+
+	public void setCategoriaNombre(String categoriaNombre) {
+		this.categoriaNombre = categoriaNombre;
 	}
 }

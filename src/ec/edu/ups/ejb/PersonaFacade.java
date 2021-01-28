@@ -28,7 +28,7 @@ public class PersonaFacade extends AbstractFacade<Persona>{
 		System.out.println("It is what it is");
 		System.out.println("Correo: " + correo + " ,Contrasena: " + contrasena);
 		
-		String jpql = "SELECT per FROM Persona per WHERE per.correo ='" + correo + "' AND per.contrasena='" + contrasena + "'";
+		String jpql = "SELECT per FROM Persona per WHERE per.correo ='" + correo + "' AND per.contrasena='" + contrasena + "' AND per.estado != 'D'";
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		
 		System.out.println("Yeah boooy");

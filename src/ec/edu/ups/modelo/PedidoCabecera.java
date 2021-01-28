@@ -3,7 +3,10 @@ package ec.edu.ups.modelo;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.json.bind.annotation.JsonbProperty;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.*;
 
 /**
@@ -15,22 +18,38 @@ import javax.persistence.*;
 public class PedidoCabecera implements Serializable {
 
 	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	private String estadoActual;
-	private String estadoSiguiente;
-	
-	@ManyToOne
-	@JoinColumn
-	private Persona persona;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCabecera")
-	private List<PedidoDetalle> pedidoDetalle = new ArrayList<PedidoDetalle>();
-	
+	@JsonbTransient
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonbProperty(nillable = true)
+    private int id;
+
+    @JsonbProperty(nillable = true)
+    private String estadoActual;
+    @JsonbTransient
+    private String estadoSiguiente;
+
+    @Transient
+    @JsonbProperty(nillable = true)
+    private Map<String, Integer> productos;
+
+    @Transient
+    @JsonbProperty(nillable = true)
+    private String cedula;
+
+
+    @ManyToOne
+    @JoinColumn
+    @JsonbTransient
+    private Persona persona;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pedidoCabecera")
+    @JsonbTransient
+    private List<PedidoDetalle> pedidoDetalle = new ArrayList<PedidoDetalle>();
 	public PedidoCabecera() {
 		super();
 	}
@@ -87,6 +106,26 @@ public class PedidoCabecera implements Serializable {
 	
 	public void addPedidoDetalle(PedidoDetalle pedidoDetalle) {
 		this.pedidoDetalle.add(pedidoDetalle);
+	}
+
+
+	public Map<String, Integer> getProductos() {
+		return productos;
+	}
+
+
+	public void setProductos(Map<String, Integer> productos) {
+		this.productos = productos;
+	}
+
+
+	public String getCedula() {
+		return cedula;
+	}
+
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
    
 }

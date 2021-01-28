@@ -40,7 +40,7 @@ public class PersonResource {
     @Path("/login")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.TEXT_PLAIN)
-    public Response post(@FormParam("correo") String correo, @FormParam("contraseña") String contrasena) throws IOException {
+    public Response login(@FormParam("correo") String correo, @FormParam("contraseña") String contrasena) throws IOException {
 		persona = new Persona();
 		persona = personaFacade.verificarUsuario(correo, contrasena);
 		
@@ -67,9 +67,10 @@ public class PersonResource {
         if(persona != null){
             persona.setCorreo(correo);
             persona.setContrasena(contrasena);
+            persona.setEstado('H');
             try{
                 personaFacade.edit(persona);
-                return Response.ok("Usuario registrado").build();
+                return Response.ok("Usuario Registrado").build();
                 
             }catch (Exception e){
                 return Response.status(500).entity("Error al registrar usuario " + e).build();
@@ -78,6 +79,75 @@ public class PersonResource {
             return Response.status(404).entity("Usuario no encontrado").build();
         }
     }
+	
+	
+	@PUT
+    @Path("/modificar/")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response update(@FormParam("cedula") String cedula, @FormParam("nombre") String nombre,
+                           @FormParam("apellido") String apellido, @FormParam("direccion") String direccion, @FormParam("telefono") String telefono,
+                           @FormParam("correo") String correo, @FormParam("contraseña") String contrasena){
+
+		persona = new Persona();
+        persona = personaFacade.buscarCliente(cedula);
+        
+		if(persona != null) {
+			Persona persona2 = new Persona();
+	        persona2 = personaFacade.buscarCliente(cedula);
+	        persona2.setNombre(nombre);
+	        persona2.setApellido(apellido);
+	        persona2.setTelefono(telefono);
+	        persona2.setDireccion(direccion);
+	        persona2.setCorreo(correo);
+	        persona2.setContrasena(contrasena);
+	        
+			try{
+                personaFacade.edit(persona2);
+                return Response.ok("Usuario Modificado").build();
+                
+            }catch (Exception e){
+                return Response.status(500).entity("Error al modificar usuario " + e).build();
+            }
+			
+		}else{
+            return Response.status(404).entity("Usuario no encontrado").build();
+        }
+    }
+	
+	
+	
+	@PUT
+    @Path("/anular/")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response anular(@FormParam("cedula") String cedula){
+		
+		persona = new Persona();
+        persona = personaFacade.buscarCliente(cedula);
+        
+        if(persona != null){
+            try{
+            	Persona per = new Persona();
+            	per = personaFacade.buscarCliente(cedula);
+            	per.setEstado('D');
+                personaFacade.edit(per);
+                return Response.ok("Usuario Anulado").build();
+                
+            }catch (Exception e){
+                return Response.status(500).entity("Error al anular usuario " + e).build();
+            }
+        }else{
+            return Response.status(404).entity("Usuario no encontrado").build();
+        }
+		
+    }
+	
+	
+	
+	
+	
+	
 	
 	
     // Ejemplo con JSON
