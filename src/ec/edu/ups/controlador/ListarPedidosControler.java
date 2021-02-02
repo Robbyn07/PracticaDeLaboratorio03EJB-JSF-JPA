@@ -67,6 +67,7 @@ public class ListarPedidosControler implements Serializable {
 	}
 	
 	public String cambiarEstado(PedidoCabecera pedido) {
+		System.out.println("llega: " + pedido.getId());
 		try {
 			switch (pedido.getEstadoActual()) {
 			case "Enviado":
@@ -108,6 +109,7 @@ public class ListarPedidosControler implements Serializable {
 	
 	private void generarFactura(PedidoCabecera pedido) {
 		FacturaCabecera fcabecera = new FacturaCabecera();
+		
 		List<FacturaDetalle> fdetalles = new ArrayList<FacturaDetalle>();
 		
 		fcabecera.setId(0);
@@ -121,28 +123,27 @@ public class ListarPedidosControler implements Serializable {
 		DecimalFormatSymbols separadoresPersonalizados = new DecimalFormatSymbols();
 		separadoresPersonalizados.setDecimalSeparator('.');
 		DecimalFormat formato1 = new DecimalFormat("#.00", separadoresPersonalizados);
-		
+
 		for(int i=0; i<pedido.getPedidoDetalle().size(); i++) {
 			FacturaDetalle det = new FacturaDetalle(0, pedido.getPedidoDetalle().get(i).getCantidad(), 
 					pedido.getPedidoDetalle().get(i).getCantidad()*pedido.getPedidoDetalle().get(i).getProducto().getPrecio(), 
 					fcabecera, pedido.getPedidoDetalle().get(i).getProducto());
-			
+
 			fcabecera.setSubtotal(fcabecera.getSubtotal()+pedido.getPedidoDetalle().get(i).getCantidad()*pedido.getPedidoDetalle().get(i).getProducto().getPrecio());
 			fcabecera.setIva(Float.parseFloat(formato1.format(fcabecera.getSubtotal()*(float)0.12)));
 			fcabecera.setTotal(Float.parseFloat(formato1.format(fcabecera.getIva()+fcabecera.getSubtotal())));
 			fdetalles.add(det);
-			
 			//Actualizar stock
 			
 			Producto produActualizar = ejbProductoFacade.find(pedido.getPedidoDetalle().get(i).getProducto().getId());
 			produActualizar.setStock(produActualizar.getStock()-pedido.getPedidoDetalle().get(i).getCantidad());
 			ejbProductoFacade.edit(produActualizar);
-			
 		}
+
+		fcabecera.setFacturasDetalle(fdetalles);
 		
 		ejbFacturaCabeceraFacade.create(fcabecera);
 		
-		fcabecera.setFacturasDetalle(fdetalles);
 	}
 	
 	

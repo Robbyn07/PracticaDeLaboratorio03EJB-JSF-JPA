@@ -162,7 +162,6 @@ public class GestionPedidos {
     @Path("/pedir")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response pedir(String jsonPedido){
-        System.out.println("llega");
         try {
             Jsonb jsonb = JsonbBuilder.create();
             PedidoCabecera pc = jsonb.fromJson(jsonPedido, PedidoCabecera.class);

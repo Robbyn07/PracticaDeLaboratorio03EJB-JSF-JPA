@@ -29,8 +29,8 @@ public class AnularFacturaControler implements Serializable {
 	
 	private String cedula;
 	private String id;
-	public static List<FacturaCabecera> cabeceras = new ArrayList<FacturaCabecera>();
-	public static List<FacturaDetalle> detalles = new ArrayList<FacturaDetalle>();
+	public static List<FacturaCabecera> cabeceras;
+	public static List<FacturaDetalle> detalles;
 	
 	
 	public void buscarPorCedula() {
