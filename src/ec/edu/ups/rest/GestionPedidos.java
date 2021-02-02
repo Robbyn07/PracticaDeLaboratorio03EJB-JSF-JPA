@@ -139,6 +139,7 @@ public class GestionPedidos {
                         productos.put(producto, cantidad);
                     }
                     pc.get(i).setProductos(productos);
+                    pc.get(i).setCedula(cedula);
                 }
 
                 return Response.ok(jsonb.toJson(pc)).build();
